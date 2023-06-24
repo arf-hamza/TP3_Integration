@@ -4,7 +4,7 @@ import React from 'react';
 import { 
   Box,
  } from "@mui/material";
-import ProfileCard from '../molecules/profile-card';
+import ProfileCard from '../molecules/profil-card/profil-card';
 
 export default function DeveloperCards() {
     return (
