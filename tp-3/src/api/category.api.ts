@@ -1,8 +1,8 @@
 
 
-interface APICategory {
-  name: string;
+export interface APICategory {
   id: string;
+  name: string;
 }
 
 export async function getApiCategory() {
@@ -10,13 +10,19 @@ export async function getApiCategory() {
     const response = await fetch("https://tp-3-api.onrender.com/categories");
     const jsonData = await response.json();
 
-    // Extraction de l'ID pour chaque catégorie
-    const categoryId = jsonData.map((category: APICategory) => category.id);
-    console.log("IDs des catégories :", categoryId);
+    // Extraction des catégories
+    const categories = jsonData.map((category: APICategory) => ({
+      id: category.id,
+      name: category.name,
+    }));
+
+    return categories;
   } catch (error) {
     console.error("Erreur lors de la récupération des catégories :", error);
+    throw error; // Vous pouvez choisir de rejeter l'erreur ou de la gérer différemment selon vos besoins
   }
 }
+
 
 export async function postApiCategory(body: APICategory) {
   try {
