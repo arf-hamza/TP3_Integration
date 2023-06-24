@@ -1,7 +1,7 @@
 
 
 export interface APICategory {
-  id: string;
+  _id: string;
   name: string;
 }
 
@@ -12,7 +12,7 @@ export async function getApiCategory() {
 
     // Extraction des catégories
     const categories = jsonData.map((category: APICategory) => ({
-      id: category.id,
+      _id: category._id,
       name: category.name,
     }));
 
@@ -41,6 +41,7 @@ export async function postApiCategory(body: APICategory) {
 }
 
 export async function putApiCategory(id: string, body: APICategory) {
+  
   try {
     const response = await fetch(
       "https://tp-3-api.onrender.com/categories/" + id,
