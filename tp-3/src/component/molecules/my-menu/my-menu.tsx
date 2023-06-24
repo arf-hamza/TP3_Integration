@@ -35,26 +35,7 @@ export default function MyMenu() {
           >
             Catégories
           </Box>
-          {/* <Grid container spacing={1} alignItems="center" justifyContent="flex-end">
-            <Grid item>
-              <Button
-                color="primary"
-                variant="text"
-                onClick={() => changeLanguage("fr")}
-              >
-                Fr
-              </Button>
-            </Grid>
-            <Grid item>
-              <Button
-                color="primary"
-                variant="text"
-                onClick={() => changeLanguage("en")}
-              >
-                Ang
-              </Button>
-            </Grid>
-          </Grid> */}
+       
         </Toolbar>
       </Container>
     </AppBar>
