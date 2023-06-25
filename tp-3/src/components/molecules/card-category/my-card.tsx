@@ -9,11 +9,11 @@ interface MyCardCategoryProps {
   handleDeleteCategory: (categoryId: string) => void;
 }
 
-const MyCardCategory: React.FC<MyCardCategoryProps> = ({
+export default function MyCardCategory({
   category,
   handleUpdateCategory,
   handleDeleteCategory,
-}) => {
+}: MyCardCategoryProps) {
   return (
     <Grid item xs={12} sm={6} md={4} lg={3}>
       <Card variant="outlined" sx={{ backgroundColor: "darkgrey" }}>
@@ -42,7 +42,6 @@ const MyCardCategory: React.FC<MyCardCategoryProps> = ({
       </Card>
     </Grid>
   );
-};
+}
 
-export default MyCardCategory;
 

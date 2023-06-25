@@ -15,11 +15,11 @@ interface MyCardProductProps {
   handleDeleteProduct: (productId: string) => void;
 }
 
-const MyCardProduct: React.FC<MyCardProductProps> = ({
+export default function MyCardProduct({
   product,
   handleUpdateProduct,
   handleDeleteProduct,
-}) => {
+}: MyCardProductProps) {
   return (
     <Grid item key={product.id} xs={6}>
       <Card sx={{ margin: "16px", backgroundColor: "darkgray" }}>
@@ -47,6 +47,5 @@ const MyCardProduct: React.FC<MyCardProductProps> = ({
       </Card>
     </Grid>
   );
-};
+}
 
-export default MyCardProduct;
