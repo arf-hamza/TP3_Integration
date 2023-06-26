@@ -17,6 +17,9 @@ export default function MyMenu() {
     console.log(`Langue sélectionnée : ${language}`);
   };
   
+  const isActivePage = (page: string) => {
+    return window.location.pathname === page;
+  };
 
   return (
     <AppBar position="fixed" elevation={0} sx={{ backgroundColor: "#333",}}>
@@ -26,11 +29,11 @@ export default function MyMenu() {
             component="a"
             href="/"
             sx={{
-              color: isMobileMenuOpen ? "white" : "white",
+              color: isActivePage("/") ? "lightgray" : "white",
               textDecoration: "none",
               display: { xs: "none", sm: "block" },
               "&:hover": {
-                color: "gray",
+                color: "lightgray"
               },
             }}
           >
@@ -41,11 +44,11 @@ export default function MyMenu() {
             href="/product"
             sx={{
               marginLeft: "20px",
-              color: isMobileMenuOpen ? "white" : "white",
+              color: isActivePage("/product") ? "lightgray" : "white",
               textDecoration: "none",
               display: { xs: "none", sm: "block" },
               "&:hover": {
-                color: "gray",
+                color: "lightgray",
               },
             }}
           >
@@ -56,11 +59,11 @@ export default function MyMenu() {
             href="/category"
             sx={{
               marginLeft: "20px",
-              color: isMobileMenuOpen ? "white" : "white",
+              color: isActivePage("/category") ? "lightgray" : "white",
               textDecoration: "none",
               display: { xs: "none", sm: "block" },
               "&:hover": {
-                color: "gray",
+                color: "lightgray",
               },
             }}
           >
@@ -82,7 +85,7 @@ export default function MyMenu() {
                  onClick={() => changeLanguage("fr")}
                  sx={{ color: "white",  
                  "&:hover": {
-                  color: "gray",
+                  color: "lightgray",
                 }, }}
                >
                  Fr
@@ -95,7 +98,7 @@ export default function MyMenu() {
                  onClick={() => changeLanguage("en")}
                  sx={{ color: "white",  
                  "&:hover": {
-                  color: "gray",
+                  color: "lightgray",
                 }, }}
                >
                  EN
@@ -115,7 +118,7 @@ export default function MyMenu() {
               left: 0,
               width: "100%",
               "&:hover": {
-                color: "gray",
+                color: "lightgray",
               },
             }}
           >
@@ -128,7 +131,7 @@ export default function MyMenu() {
                 display: "block",
                 marginBottom: "10px",
                 "&:hover": {
-                  color: "gray",
+                  color: "lightgray",
                 },
               }}
             >
@@ -143,7 +146,7 @@ export default function MyMenu() {
                 display: "block",
                 marginBottom: "10px",
                 "&:hover": {
-                  color: "gray",
+                  color: "lightgray",
                 },
               }}
             >
@@ -157,7 +160,7 @@ export default function MyMenu() {
                 textDecoration: "none",
                 display: "block",
                 "&:hover": {
-                  color: "gray",
+                  color: "lightgray",
                 },
               }}
             >
