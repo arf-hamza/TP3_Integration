@@ -5,9 +5,12 @@ import { Box, Button, Grid, IconButton, Toolbar } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import Container from "@mui/material/Container";
+import { usePathname } from "next/navigation";
 
 export default function MyMenu() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const pathname = usePathname();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -17,7 +20,7 @@ export default function MyMenu() {
   };
   
   const isActivePage = (page: string) => {
-    return window.location.pathname === page;
+    return pathname === page;
   };
 
   return (
