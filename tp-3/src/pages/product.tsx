@@ -18,7 +18,6 @@ import {
 } from "../api/product.api";
 import MyMenu from "@/components/molecules/my-menu/my-menu";
 import MyCardProduct from "../components/molecules/card-product/my-card";
-import generateUniqueId from "../../utils/generateUniqueId";
 
 interface Product {
   id: string;
@@ -59,7 +58,7 @@ const ProductPage = () => {
   const handleAddProduct = async () => {
     try {
       const product = {
-        id: generateUniqueId(),
+        id: "",
         title: "Nouveau produit",
         description: "Description du nouveau produit",
         price: 10,
