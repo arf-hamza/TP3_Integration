@@ -18,7 +18,6 @@ import {
   Grid,
 } from "@mui/material";
 import MyCardCategory from "@/components/molecules/card-category/my-card";
-import generateUniqueId from "../../utils/generateUniqueId";
 import { APICategory } from "../api/category.api";
 
 
@@ -50,7 +49,7 @@ const CategoryPage = () => {
   const handleAddCategory = async () => {
     try {
       const category: APICategory = {
-        _id: generateUniqueId(),
+        _id: "",
         name: "Nouvelle catégorie",
       };
       await postApiCategory(category);
