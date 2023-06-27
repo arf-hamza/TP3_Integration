@@ -6,11 +6,11 @@ import MyMenu from "@/components/molecules/my-menu/my-menu"
 
 export default async function Home(){
     return(
-      <main className={Style.main_container}>
-          <MyMenu />
-            <h1>TP 3 - Intégration</h1>
+        <main className={Style.main_container}>
+            <MyMenu />
+            <h1>TP3 - Intégration</h1>
             <DeveloperCards />
             <WorkDescription />
         </main>
-    )
-}
+    );
+};
