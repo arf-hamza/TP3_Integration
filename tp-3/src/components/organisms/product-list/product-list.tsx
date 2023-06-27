@@ -48,12 +48,13 @@ const ProductList = (props: ProductListProps) => {
   const handleAddProduct = async () => {
     try {
       const product: APIProduct = {
-        _id: "",
-        title: "Nouveaux Produits",
-        description: "Nouveaux Produits",
-        price: 0,
-        categoryId: "",
-        userId: "",
+          _id: "",
+          title: "Nouveaux Produits",
+          description: "Nouveaux Produits",
+          price: 0,
+          categoryId: "",
+          userId: "",
+          isSold: false
       };
       await postApiProduct(product);
       fetchProducts();
