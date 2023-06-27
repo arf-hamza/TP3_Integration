@@ -16,6 +16,8 @@ export default function MyMenu() {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  const pathname = usePathname();
+  
   const changeLanguage = (language: string) => {
   };
   
@@ -113,9 +115,8 @@ export default function MyMenu() {
             sx={{
               display: { xs: "block", sm: "none" },
               backgroundColor: "#333",
-              marginTop: "50px",
+              textAlign: "center",
               padding: "10px",
-              position: "fixed",
               top: 0,
               left: 0,
               width: "100%",
@@ -161,6 +162,7 @@ export default function MyMenu() {
                 color: "white",
                 textDecoration: "none",
                 display: "block",
+                marginBottom: "10px",
                 "&:hover": {
                   color: "lightgray",
                 },
