@@ -1,4 +1,3 @@
-
 import "./globals.css";
 import MyMenu from "@/components/molecules/my-menu/my-menu";
 
@@ -24,4 +23,3 @@ export default function RootLayout({
     </html>
   );
 }
-
