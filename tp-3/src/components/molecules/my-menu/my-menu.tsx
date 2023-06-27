@@ -5,6 +5,7 @@ import { Box, Button, Grid, IconButton, Toolbar } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import Container from "@mui/material/Container";
+import { usePathname } from "next/navigation";
 
 export default function MyMenu() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -13,11 +14,13 @@ export default function MyMenu() {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  const pathname = usePathname();
+  
   const changeLanguage = (language: string) => {
   };
   
   const isActivePage = (page: string) => {
-    return window.location.pathname === page;
+    return pathname === page;
   };
 
   return (
@@ -110,9 +113,8 @@ export default function MyMenu() {
             sx={{
               display: { xs: "block", sm: "none" },
               backgroundColor: "#333",
-              marginTop: "50px",
+              textAlign: "center",
               padding: "10px",
-              position: "fixed",
               top: 0,
               left: 0,
               width: "100%",
@@ -158,6 +160,7 @@ export default function MyMenu() {
                 color: "white",
                 textDecoration: "none",
                 display: "block",
+                marginBottom: "10px",
                 "&:hover": {
                   color: "lightgray",
                 },
