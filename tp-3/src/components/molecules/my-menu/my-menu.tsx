@@ -45,7 +45,7 @@ export default function MyMenu() {
           </Box>
           <Box
             component="a"
-            href="/product"
+            href="/products"
             sx={{
               marginLeft: "20px",
               color: isActivePage("/product") ? "lightgray" : "white",
@@ -142,7 +142,7 @@ export default function MyMenu() {
             </Box>
             <Box
               component="a"
-              href="/product"
+              href="/products"
               sx={{
                 color: "white",
                 textDecoration: "none",

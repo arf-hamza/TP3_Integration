@@ -86,7 +86,7 @@ const ProductList = (props: ProductListProps) => {
         <Typography color="white" variant="h4">
           Liste des Produits
         </Typography>
-        <Button variant="contained" color="primary" onClick={() => (window.location.href = "/newProduct")}>
+        <Button variant="contained" color="primary" onClick={() => {window.location.href = "/newProduct";}}>
           Ajouter un Produit
         </Button>
       </Box>
