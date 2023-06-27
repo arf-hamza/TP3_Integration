@@ -82,7 +82,7 @@ const CategoryPage = () => {
         <Typography color="white" variant="h4">
           Liste des catégories
         </Typography>
-        <Button variant="contained" color="primary" onClick={handleAddCategory}>
+        <Button variant="contained" color="primary" onClick={() => (window.location.href = "/newCategory")}>
           Ajouter une catégorie
         </Button>
       </Box>
