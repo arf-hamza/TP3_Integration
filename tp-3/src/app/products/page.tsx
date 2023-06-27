@@ -98,15 +98,31 @@ const ProductPage = () => {
           backgroundColor: "black",
           minHeight: "100vh",
           padding: "20px",
-          marginTop: "50px",
+          marginTop: "50px"
         }}
       >
-        <Typography color="white" variant="h4">
-          Liste des produits
-        </Typography>
-        <Button variant="contained" color="primary" onClick={handleAddProduct}>
+        <Box
+          sx={{
+            textAlign: "center",
+            marginTop: 6,
+            marginBottom: 3,
+            width: "100%"
+          }}
+        >
+        <Button variant="contained" onClick={handleAddProduct} 
+          sx={{
+            ":hover":{
+              bgcolor: "lightgray",
+              color: "black"
+            },
+            backgroundColor: "#333",
+            padding: 1,
+            width: "50%"
+          }}
+        >
           Ajouter un produit
         </Button>
+        </Box>
         <Grid container spacing={6}>
           {products.map((product) => (
             <MyCardProduct

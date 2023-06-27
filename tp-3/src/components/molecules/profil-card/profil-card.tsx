@@ -31,7 +31,7 @@ export default function ProfileCard({name, img, role}: ProfileCard) {
             <Typography gutterBottom variant="h5" component="div">
               { name }
             </Typography>
-            <Typography variant="body2">
+            <Typography variant="body2" sx={{ color: "lightgray" }}>
               {role}
             </Typography>
           </CardContent>

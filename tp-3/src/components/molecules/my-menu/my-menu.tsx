@@ -10,6 +10,8 @@ import { usePathname } from "next/navigation";
 export default function MyMenu() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const pathname = usePathname();
+
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
