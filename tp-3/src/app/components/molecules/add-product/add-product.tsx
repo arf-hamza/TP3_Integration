@@ -23,7 +23,7 @@ return (
         justifyContent="flex-start"
         alignItems="center"
         spacing={2}>
-            <h1 style={{color: '#ffffff'}}>Nouveau Produit</h1>
+            <h1 style={{color: '#ffffff', textAlign: 'center'}}>Nouveau Produit</h1>
             <TextField fullWidth id="nom-produit" label="Nom du produit" variant="outlined" sx={inputStyle} required />
             <TextField fullWidth id="prix-produit" label="Prix du produit" variant="outlined" sx={inputStyle} required />
             <TextField fullWidth id="categorie-produit" label="Catégorie du produit" variant="outlined" sx={inputStyle}/>
@@ -35,8 +35,8 @@ return (
                 justifyContent="space-between"
                 alignItems="flex-start"
                 spacing={1}>
-                    <Button variant="outlined" color="error">CANCEL</Button>
-                    <Button variant="contained" sx={{bgcolor: '#ffffff', color: '#000000','&:hover': {bgcolor: '#dddddd'}}}>CONFIRM</Button>
+                    <Button variant="outlined" color="error">ANNULER</Button>
+                    <Button variant="contained" sx={{bgcolor: '#ffffff', color: '#000000','&:hover': {bgcolor: '#dddddd'}}}>CONFIRMER</Button>
                 </Stack>
             </Box>
         </Stack>
