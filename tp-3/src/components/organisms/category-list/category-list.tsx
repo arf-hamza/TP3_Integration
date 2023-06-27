@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import "../app/globals.css";
 import {
     APICategory,
   getApiCategory,
@@ -17,9 +16,11 @@ import {
 } from "@mui/material";
 import MyCardCategory from "@/components/molecules/card-category/my-card";
 
-
-const CategoryList = () => {
-  const [categories, setCategories] = useState<APICategory[]>([]);
+export interface CategoryListProps {
+  categories: APICategory[];
+}
+const CategoryList = (props: CategoryListProps) => {
+  const [categories, setCategories] = useState<APICategory[]>(props.categories);
 
   useEffect(() => {
     fetchCategories();

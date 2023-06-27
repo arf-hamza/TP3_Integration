@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import "../app/globals.css";
 import {
   getApiCategory,
   postApiCategory,
@@ -70,7 +69,7 @@ const CategoryPage = () => {
 
   return (
     <Box>
-      <CategoryList data={categories} />
+      <CategoryList categories={categories} />
     </Box>
   );
 };

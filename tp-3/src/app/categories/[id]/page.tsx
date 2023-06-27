@@ -15,7 +15,7 @@ import { useRouter } from "next/router";
 
 
 const CategoryPage = ({params}) => {
-    const id = params.id;
+    const id = params._id;
     const [categories, setCategories] = useState<APICategory[]>([]);
     const router = useRouter();
 
