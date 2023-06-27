@@ -11,7 +11,7 @@ interface APIProduct {
 
 export async function getApiProducts(): Promise<APIProduct[]> {
   try {
-    const response = await fetch("https://tp-3-api.onrender.com/products");
+    const response = await fetch("https://api-without-authorisation.onrender.com/products");
     const jsonData = await response.json();
     return jsonData as APIProduct[];
   } catch (error) {
@@ -23,7 +23,7 @@ export async function getApiProducts(): Promise<APIProduct[]> {
 
 export async function postApiProduct(body: APIProduct) {
   try {
-    const response = await fetch("https://tp-3-api.onrender.com/products", {
+    const response = await fetch("https://api-without-authorisation.onrender.com/products", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -40,7 +40,7 @@ export async function postApiProduct(body: APIProduct) {
 export async function putApiProduct(id: string, body: APIProduct) {
   try {
     const response = await fetch(
-      "https://tp-3-api.onrender.com/products/" + id,
+      "https://api-without-authorisation.onrender.com/products/" + id,
       {
         method: "PUT",
         headers: {
@@ -59,7 +59,7 @@ export async function putApiProduct(id: string, body: APIProduct) {
 export async function deleteApiProduct(id: string) {
   try {
     const response = await fetch(
-      "https://tp-3-api.onrender.com/products/" + id,
+      "https://api-without-authorisation.onrender.com/products/" + id,
       {
         method: "DELETE",
       }
