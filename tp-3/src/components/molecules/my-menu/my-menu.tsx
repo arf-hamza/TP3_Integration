@@ -16,7 +16,7 @@ export default function MyMenu() {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  const pathname = usePathname();
+  const pathChangeLanguage = usePathname();
   
   const changeLanguage = (language: string) => {
   };
@@ -60,7 +60,7 @@ export default function MyMenu() {
           </Box>
           <Box
             component="a"
-            href="/category"
+            href="/categories"
             sx={{
               marginLeft: "20px",
               color: isActivePage("/category") ? "lightgray" : "white",
@@ -157,7 +157,7 @@ export default function MyMenu() {
             </Box>
             <Box
               component="a"
-              href="/category"
+              href="/categories"
               sx={{
                 color: "white",
                 textDecoration: "none",

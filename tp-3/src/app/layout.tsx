@@ -1,5 +1,6 @@
 
 import "./globals.css";
+import MyMenu from "@/components/molecules/my-menu/my-menu";
 
 export const metadata = {
 
@@ -17,6 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <MyMenu />
         {children}
       </body>
     </html>
