@@ -1,21 +1,21 @@
-"use client";
 import React, { useState, useEffect } from "react";
 import MyMenu from "@/components/molecules/my-menu/my-menu";
 import "../app/globals.css";
 import {
     putApiCategory,
-} from "../api/category.api";
+} from "../../../api/category.api";
 import {
     Box,
     Typography,
     Button,
 } from "@mui/material";
-import { APICategory } from "../api/category.api";
+import { APICategory } from "../../../api/category.api";
 import { useRouter } from "next/router";
 
 
 
-const CategoryPage = () => {
+const CategoryPage = ({params}) => {
+    const id = params.id;
     const [categories, setCategories] = useState<APICategory[]>([]);
     const router = useRouter();
 
@@ -50,6 +50,7 @@ const CategoryPage = () => {
                 color: "white",
                 }}
             />
+            
         </Box>    
 
         <Box sx={{ marginTop: "70px" }}>

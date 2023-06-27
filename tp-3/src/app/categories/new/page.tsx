@@ -4,13 +4,13 @@ import MyMenu from "@/components/molecules/my-menu/my-menu";
 import "../app/globals.css";
 import {
     postApiCategory,
-} from "../api/category.api";
+} from "../../../api/category.api";
 import {
     Box,
     Typography,
     Button,
 } from "@mui/material";
-import { APICategory } from "../api/category.api";
+import { APICategory } from "../../../api/category.api";
 import { useRouter } from "next/router";
 
 const CategoryPage = () => {

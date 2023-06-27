@@ -1,27 +1,24 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import MyMenu from "@/components/molecules/my-menu/my-menu";
 import "../app/globals.css";
 import {
+    APICategory,
   getApiCategory,
   postApiCategory,
   putApiCategory,
   deleteApiCategory,
-} from "../api/category.api";
+} from "../../../api/category.api";
 import {
   Box,
   Typography,
   Button,
-  Card,
-  CardContent,
   Grid,
 } from "@mui/material";
 import MyCardCategory from "@/components/molecules/card-category/my-card";
-import { APICategory } from "../api/category.api";
 
 
-const CategoryPage = () => {
+const CategoryList = () => {
   const [categories, setCategories] = useState<APICategory[]>([]);
 
   useEffect(() => {
@@ -70,7 +67,6 @@ const CategoryPage = () => {
 
   return (
     <Box>
-      <MyMenu />
       <Box
         sx={{
           backgroundColor: "black",
@@ -102,4 +98,4 @@ const CategoryPage = () => {
   );
 };
 
-export default CategoryPage;
+export default CategoryList;

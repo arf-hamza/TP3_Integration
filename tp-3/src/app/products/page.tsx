@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import "../app/globals.css";
 import {
   Card,
   CardContent,
@@ -15,9 +14,9 @@ import {
   postApiProduct,
   putApiProduct,
   deleteApiProduct,
-} from "../api/product.api";
+} from "../../api/product.api";
 import MyMenu from "@/components/molecules/my-menu/my-menu";
-import MyCardProduct from "../components/molecules/card-product/my-card";
+import MyCardProduct from "../../components/molecules/card-product/my-card";
 
 interface Product {
   id: string;
