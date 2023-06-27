@@ -15,7 +15,15 @@ const inputStyle = {
     '&.Mui-focused fieldset': {borderColor: '#FFFFFF'}},                    // outline (focused)
     }
 
-export default function AddProduct(/*props : ProductProps*/) {
+interface ProductProps {
+    name: string;
+    price: string;
+    category: string;
+    creator: string;
+    description: string;
+    }
+
+export default function ModifyProduct(props : ProductProps) {
 return (
     <>
         <Stack
@@ -24,11 +32,11 @@ return (
         alignItems="center"
         spacing={2}>
             <h1 style={{color: '#ffffff'}}>Nouveau Produit</h1>
-            <TextField fullWidth id="nom-produit" label="Nom du produit" variant="outlined" sx={inputStyle} required />
-            <TextField fullWidth id="prix-produit" label="Prix du produit" variant="outlined" sx={inputStyle} required />
-            <TextField fullWidth id="categorie-produit" label="Catégorie du produit" variant="outlined" sx={inputStyle}/>
-            <TextField fullWidth id="createur-produit" label="Créateur du produit" variant="outlined" sx={inputStyle}/>
-            <TextField fullWidth id="description-produit" label="Description du produit" variant="outlined" sx={inputStyle}/>
+            <TextField fullWidth defaultValue={props.name} id="nom-produit" label="Nom du produit" variant="outlined" sx={inputStyle} />
+            <TextField fullWidth defaultValue={props.price} id="prix-produit" label="Prix du produit" variant="outlined" sx={inputStyle} />
+            <TextField fullWidth defaultValue={props.category} id="categorie-produit" label="Catégorie du produit" variant="outlined" sx={inputStyle}/>
+            <TextField fullWidth defaultValue={props.creator} id="createur-produit" label="Créateur du produit" variant="outlined" sx={inputStyle}/>
+            <TextField fullWidth defaultValue={props.description} id="description-produit" label="Description du produit" variant="outlined" sx={inputStyle}/>
             <Box>
                 <Stack
                 direction="row"
