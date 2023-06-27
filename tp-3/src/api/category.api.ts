@@ -7,7 +7,7 @@ export interface APICategory {
 
 export async function getApiCategory() {
   try {
-    const response = await fetch("https://tp-3-api.onrender.com/categories");
+    const response = await fetch("https://api-without-authorisation.onrender.com/categories");
     const jsonData = await response.json();
 
     // Extraction des catégories
@@ -26,7 +26,7 @@ export async function getApiCategory() {
 
 export async function postApiCategory(body: APICategory) {
   try {
-    const response = await fetch("https://tp-3-api.onrender.com/categories", {
+    const response = await fetch("https://api-without-authorisation.onrender.com/categories", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -44,7 +44,7 @@ export async function putApiCategory(id: string, body: APICategory) {
   
   try {
     const response = await fetch(
-      "https://tp-3-api.onrender.com/categories/" + id,
+      "https://api-without-authorisation.onrender.com/categories/" + id,
       {
         method: "PUT",
         headers: {
@@ -63,7 +63,7 @@ export async function putApiCategory(id: string, body: APICategory) {
 export async function deleteApiCategory(id: string) {
   try {
     const response = await fetch(
-      "https://tp-3-api.onrender.com/categories/" + id,
+      "https://api-without-authorisation.onrender.com/categories/" + id,
       {
         method: "DELETE",
       }
