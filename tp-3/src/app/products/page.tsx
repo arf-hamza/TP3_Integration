@@ -2,9 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 import {
-  Card,
-  CardContent,
-  Typography,
   Button,
   Box,
   Grid,
@@ -19,12 +16,13 @@ import MyMenu from "@/components/molecules/my-menu/my-menu";
 import MyCardProduct from "../../components/molecules/card-product/my-card";
 
 interface Product {
-  id: string;
+  _id: string;
   title: string;
   description: string;
   price: number;
   categoryId: string;
   userId: string;
+  isSold: boolean;
 }
 
 const ProductPage = () => {
@@ -61,7 +59,7 @@ const ProductPage = () => {
         title: "Nouveau produit",
         description: "Description du nouveau produit",
         price: 10,
-        categoryId: "1",
+        categoryId: "",
         userId: "1",
       };
       await postApiProduct(product);
@@ -76,11 +74,11 @@ const ProductPage = () => {
     try {
       const product = {
         id: productId,
-        title: "Produit modifié",
+        title: "",
         description: "Description du produit modifié",
         price: 20,
-        categoryId: "1",
-        userId: "1",
+        categoryId: "",
+        userId: "",
       };
       await putApiProduct(productId, product);
       // Actualiser la liste des produits après la modification
@@ -126,7 +124,7 @@ const ProductPage = () => {
         <Grid container spacing={6}>
           {products.map((product) => (
             <MyCardProduct
-              key={product.id}
+              key={product._id}
               product={product}
               handleUpdateProduct={handleUpdateProduct}
               handleDeleteProduct={handleDeleteProduct}
