@@ -3,49 +3,19 @@ import React, { useState, useEffect } from "react";
 import MyMenu from "@/components/molecules/my-menu/my-menu";
 import "../app/globals.css";
 import {
-    getApiCategory,
     postApiCategory,
-    putApiCategory,
-    deleteApiCategory,
 } from "../api/category.api";
 import {
     Box,
     Typography,
     Button,
-    Card,
-    CardContent,
-    Grid,
 } from "@mui/material";
-import MyCardCategory from "@/components/molecules/card-category/my-card";
 import { APICategory } from "../api/category.api";
 import { useRouter } from "next/router";
 
 const CategoryPage = () => {
     const [categories, setCategories] = useState<APICategory[]>([]);
     const router = useRouter();
-
-    useEffect(() => {
-        fetchCategories();
-    }
-    , []);
-
-    const fetchCategories = async () => {
-        try {
-            const response = await getApiCategory();
-            setCategories(response);
-        } catch (error) {
-            console.error("Erreur lors de la récupération des catégories :", error);
-        }
-    };
-
-    const handleDeleteCategory = async (categoryId: string) => {
-        try {
-            await deleteApiCategory(categoryId);
-            fetchCategories();
-        } catch (error) {
-            console.error("Erreur lors de la suppression de la catégorie :", error);
-        }
-    };
 
     const handleAddCategory = async () => {
         try {
@@ -54,8 +24,7 @@ const CategoryPage = () => {
                 name: "Nouvelle catégorie",
             };
             await postApiCategory(category);
-            fetchCategories();
-        } catch (error) {
+           } catch (error) {
             console.error("Erreur lors de l'ajout de la catégorie :", error);
         }
     };
@@ -69,21 +38,45 @@ return (
             </Typography>
         </Box>
         <Box sx={{ marginTop: "70px" }}>  
-            <input type="text" placeholder="Nouvelle catégorie" />
-        </Box>
+            <input
+                type="text"
+                placeholder="Nouvelle catégorie"
+                style={{
+                width: "50%",
+                height: "40px",
+                padding: "10px",
+                fontSize: "16px",
+                backgroundColor: "black",
+                borderColor: "gray",
+                color: "white",
+                }}
+            />
+        </Box>    
 
         <Box sx={{ marginTop: "70px" }}>
             <Button
                 variant="contained"
-                color="primary"
+                color="inherit"
                 onClick={handleAddCategory}
+                style={{
+                    backgroundColor: "gray",
+                    color: "white",
+                    borderRadius: "0",
+                    width: "200px",
+                  }}
             >
                 Save
             </Button>
             <Button
                 variant="contained"
-                color="secondary"
+                color="error"
                 onClick={() => router.push("/category")}
+                style={{
+                    backgroundColor: "white",
+                    color: "gray",
+                    borderRadius: "0",
+                    width: "200px",
+                  }}
             >
                 Cancel
             </Button>
