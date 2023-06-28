@@ -19,6 +19,7 @@ export default function MyMenu() {
   const pathChangeLanguage = usePathname();
   
   const changeLanguage = (language: string) => {
+    window.location.href = `/${language}`
   };
   
   const isActivePage = (page: string) => {
@@ -48,7 +49,7 @@ export default function MyMenu() {
             href="/products"
             sx={{
               marginLeft: "20px",
-              color: isActivePage("/product") ? "lightgray" : "white",
+              color: isActivePage("/products") ? "lightgray" : "white",
               textDecoration: "none",
               display: { xs: "none", sm: "block" },
               "&:hover": {
@@ -63,7 +64,7 @@ export default function MyMenu() {
             href="/categories"
             sx={{
               marginLeft: "20px",
-              color: isActivePage("/category") ? "lightgray" : "white",
+              color: isActivePage("/categories") ? "lightgray" : "white",
               textDecoration: "none",
               display: { xs: "none", sm: "block" },
               "&:hover": {

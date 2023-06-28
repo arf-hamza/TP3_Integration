@@ -1,0 +1,17 @@
+{
+    "common": {
+      "button": {
+        "save": "Save",
+        "delete": "Delete"
+      }
+    },
+    "home": {
+      "title": "TP 3 - Integration"
+    },
+    "developerCard": {
+        "designer": "Designer",
+        "developerFemale": "Developer",
+        "developer": "Developer"
+    }
+  }
+  
