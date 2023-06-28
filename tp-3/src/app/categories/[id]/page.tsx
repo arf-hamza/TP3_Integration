@@ -17,23 +17,17 @@ export interface DetailCategoryPageProps {
         id: string;
       };
 }
-export default function DetailCategoryPage({ params }: DetailCategoryPageProps) {
-console.log("CategoryPage");
-console.log(params.id);
+const DetailCategoryPage = (props: DetailCategoryPageProps) => {
     const [category, setCategory] = useState<APICategory>();
-    const CategoryPage = (category: APICategory) => {
-    const id = params.id;
-
+    const id = props.params.id;
+    // Execute the fetchCategory function only once, when the component is mounted
     useEffect(() => {
-        console.log("useEffect");
         fetchCategory();
     }, []);
 
     const fetchCategory = async () => {
         try {
-            console.log("fetchCategory");
             const response = await getCategoryById(id);
-            console.log(response);
             setCategory(response);
         } catch (error) {
             console.error("Erreur lors de la récupération de la catégorie :", error);
@@ -47,14 +41,15 @@ console.log(params.id);
             console.error("Erreur lors de la modification de la catégorie :", error);
         }
     };
-    
-    };
+
     return (
-        <Box sx={{ marginTop: "70px", textAlign:"center"}}>
-            <h2>Modifier la Catégorie </h2>
-            <h3>{category?.name}</h3>
-          <CategoryForm/>
+        <Box sx={{ marginTop: "100px", textAlign:"center"}}>
+            <Typography variant="h4" component="h1" gutterBottom>
+            Modifier la Catégorie 
+            </Typography>
+          <CategoryForm id={category?._id} name={category?.name}/>
         </Box>
       );
 }
 
+export default DetailCategoryPage;

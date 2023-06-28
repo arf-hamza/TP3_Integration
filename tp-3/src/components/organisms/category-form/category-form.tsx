@@ -11,8 +11,12 @@ import {
 import { APICategory } from "../../../api/category.api";
 import { Form } from "react-router-dom";
 
-const CategoryForm = () => {
-    const [categories, setCategories] = useState<APICategory[]>([]);
+export interface CategoryFormProps {
+    id?: string;
+    name?: string;
+}
+
+const CategoryForm = (props:CategoryFormProps) => {
 
     const handleUpdateCategory = async (category: APICategory) => {
         try {
@@ -24,7 +28,7 @@ const CategoryForm = () => {
 
     return (
         <form >
-            <Box sx={{ marginTop: "150px", textAlign:"center"}}>
+            <Box sx={{ marginTop: "70px", textAlign:"center"}}>
             <Box>
                 <input
                     type="text"
@@ -38,6 +42,7 @@ const CategoryForm = () => {
                         borderColor: "gray",
                         color: "white",
                     }}
+                    value={props.name}
                 />
             </Box>
 
@@ -58,7 +63,7 @@ const CategoryForm = () => {
                 <Button
                     variant="contained"
                     color="error"
-
+                    href="/categories"
                     style={{
                         backgroundColor: "white",
                         color: "gray",
