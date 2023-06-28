@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import MyMenu from "@/components/molecules/my-menu/my-menu";
-import "../app/globals.css";
 import {
     postApiCategory,
 } from "../../../api/category.api";
@@ -11,11 +10,9 @@ import {
     Button,
 } from "@mui/material";
 import { APICategory } from "../../../api/category.api";
-import { useRouter } from "next/router";
 
 const CategoryPage = () => {
     const [categories, setCategories] = useState<APICategory[]>([]);
-    const router = useRouter();
 
     const handleAddCategory = async () => {
         try {
@@ -70,7 +67,7 @@ return (
             <Button
                 variant="contained"
                 color="error"
-                onClick={() => router.push("/category")}
+             
                 style={{
                     backgroundColor: "white",
                     color: "gray",

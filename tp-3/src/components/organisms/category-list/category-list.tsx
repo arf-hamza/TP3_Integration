@@ -15,6 +15,7 @@ import {
   Grid,
 } from "@mui/material";
 import MyCardCategory from "@/components/molecules/card-category/my-card";
+import { Console } from "console";
 
 export interface CategoryListProps {
   categories: APICategory[];
@@ -28,6 +29,7 @@ const CategoryList = (props: CategoryListProps) => {
 
   const fetchCategories = async () => {
     try {
+      console.log("fetchCategories");
       const response = await getApiCategory();
       setCategories(response);
     } catch (error) {
@@ -37,6 +39,7 @@ const CategoryList = (props: CategoryListProps) => {
 
   const handleDeleteCategory = async (categoryId: string) => {
     try {
+      console.log("handleDeleteCategory");
       await deleteApiCategory(categoryId);
       fetchCategories();
     } catch (error) {
@@ -46,6 +49,7 @@ const CategoryList = (props: CategoryListProps) => {
 
   const handleAddCategory = async () => {
     try {
+      console.log("handleAddCategory");
       const category: APICategory = {
         _id: "",
         name: "Nouvelle catégorie",
@@ -59,6 +63,7 @@ const CategoryList = (props: CategoryListProps) => {
 
   const handleUpdateCategory = async (category: APICategory) => {
     try {
+      console.log("handleUpdateCategory");
       await putApiCategory(category._id, category);
       fetchCategories();
     } catch (error) {
@@ -79,7 +84,7 @@ const CategoryList = (props: CategoryListProps) => {
         <Typography color="white" variant="h4">
           Liste des catégories
         </Typography>
-        <Button variant="contained" color="primary" onClick={() => (window.location.href = "/newCategory")}>
+        <Button variant="contained" color="primary" href = "/categories/new">
           Ajouter une catégorie
         </Button>
       </Box>

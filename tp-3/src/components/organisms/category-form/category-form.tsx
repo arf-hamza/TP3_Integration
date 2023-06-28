@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import "../app/globals.css";
 import {
     putApiCategory,
 } from "../../../api/category.api";
@@ -10,24 +9,23 @@ import {
     Button,
 } from "@mui/material";
 import { APICategory } from "../../../api/category.api";
-import { useRouter } from "next/router";
+import { Form } from "react-router-dom";
 
 const CategoryForm = () => {
     const [categories, setCategories] = useState<APICategory[]>([]);
-    const router = useRouter();
 
     const handleUpdateCategory = async (category: APICategory) => {
         try {
             await putApiCategory(category._id, category);
-            router.push("/category");
         } catch (error) {
             console.error("Erreur lors de la modification de la catégorie :", error);
         }
     };
 
     return (
-        <>
-            <Box sx={{ marginTop: "70px" }}>
+        <form >
+            <Box sx={{ marginTop: "150px", textAlign:"center"}}>
+            <Box>
                 <input
                     type="text"
                     placeholder="Catégorie"
@@ -60,7 +58,7 @@ const CategoryForm = () => {
                 <Button
                     variant="contained"
                     color="error"
-                    onClick={() => router.push("/category")}
+
                     style={{
                         backgroundColor: "white",
                         color: "gray",
@@ -71,9 +69,9 @@ const CategoryForm = () => {
                     Cancel
                 </Button>
             </Box>
-        </>
+            </Box>
+        </form>
     );
 }
 
 export default CategoryForm;
-
