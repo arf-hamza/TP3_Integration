@@ -13,11 +13,11 @@ export default function DeveloperCards() {
 
   return (
     <Box sx={{display: "flex", flexWrap: 'wrap', justifyContent: "space-around", gap: "1rem"}}>
-        <ProfileCard name='Aline' img='/img/react.png' role={ `${t('developerCard.designer')}/${t('developerCard.developerFemale')}` } />
-        <ProfileCard name='Jonathan' img='/img/react.png' role={ `${t('developerCard.designer')}/${t('developerCard.developer')}` } />
-        <ProfileCard name='Hamza' img='/img/react.png' role={ `${t('developerCard.designer')}/${t('developerCard.developer')}` }/>
-        <ProfileCard name='Juliana' img='/img/react.png' role={ `${t('developerCard.designer')}/${t('developerCard.developerFemale')}` } />      
-        <ProfileCard name='Stella' img='/img/react.png' role={ `${t('developerCard.designer')}/${t('developerCard.developerFemale')}` }/>        
+        <ProfileCard name='Aline' img='/img/aline.png' role={ `${t('developerCard.designer')}/${t('developerCard.developerFemale')}` } />
+        <ProfileCard name='Jonathan' img='/img/jo.png' role={ `${t('developerCard.designer')}/${t('developerCard.developer')}` } />
+        <ProfileCard name='Hamza' img='/img/hamza.png' role={ `${t('developerCard.designer')}/${t('developerCard.developer')}` }/>
+        <ProfileCard name='Juliana' img='/img/juliana.jpg' role={ `${t('developerCard.designer')}/${t('developerCard.developerFemale')}` } />      
+        <ProfileCard name='Stella' img='/img/stella.png' role={ `${t('developerCard.designer')}/${t('developerCard.developerFemale')}` }/>        
     </Box>
   );
   }

@@ -1,3 +1,5 @@
+"use client";
+
 import DeveloperCards from "@/components/organisms/developer-cards"
 import WorkDescription from "@/components/organisms/work-description"
 import { useTranslations } from "next-intl";
