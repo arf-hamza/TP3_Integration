@@ -1,16 +1,17 @@
-import DeveloperCards from "@/components/organisms/developer-cards"
-import Style from "./page.module.css"
-import WorkDescription from "@/components/organisms/work-description"
-import MyMenu from "@/components/molecules/my-menu/my-menu"
+"use client";
 
+import DeveloperCards from "@/components/organisms/developer-cards"
+import WorkDescription from "@/components/organisms/work-description"
+import { useTranslations } from "next-intl";
 
 export default async function Home(){
+    const t = useTranslations();
+
     return(
-        <main className={Style.main_container}>
-            <MyMenu />
-            <h1>TP3 - Intégration</h1>
+        <>
+            <h1>{ t('home.title') }</h1>
             <DeveloperCards />
             <WorkDescription />
-        </main>
-    );
-};
+        </>
+    )
+}
