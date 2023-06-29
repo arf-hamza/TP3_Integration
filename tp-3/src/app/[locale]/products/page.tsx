@@ -15,6 +15,7 @@ import {
   postApiProduct,
   putApiProduct,
   deleteApiProduct,
+  APIProduct,
 } from "@/api/product.api";
 import MyMenu from "@/components/molecules/my-menu/my-menu";
 import MyCardProduct from "@/components/molecules/card-product/my-card";
@@ -29,7 +30,7 @@ interface Product {
 }
 
 const ProductPage = () => {
-  const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<APIProduct[]>([]);
 
   useEffect(() => {
     // Récupérer la liste des produits au chargement de la page
@@ -58,13 +59,15 @@ const ProductPage = () => {
   const handleAddProduct = async () => {
     try {
       const product = {
-        id: "",
+        _id: '',
+        isSold: false,
         title: "Nouveau produit",
         description: "Description du nouveau produit",
         price: 10,
         categoryId: "1",
         userId: "1",
       };
+
       await postApiProduct(product);
       // Actualiser la liste des produits après l'ajout
       fetchProducts();
@@ -76,12 +79,13 @@ const ProductPage = () => {
   const handleUpdateProduct = async (productId: string) => {
     try {
       const product = {
-        id: productId,
+        _id: productId,
         title: "Produit modifié",
         description: "Description du produit modifié",
         price: 20,
         categoryId: "1",
         userId: "1",
+        isSold: false
       };
       await putApiProduct(productId, product);
       // Actualiser la liste des produits après la modification
@@ -92,8 +96,7 @@ const ProductPage = () => {
   };
 
   return (
-    <div>
-      <MyMenu />
+    <>
       <Box
         sx={{
           backgroundColor: "black",
@@ -111,7 +114,7 @@ const ProductPage = () => {
         <Grid container spacing={6}>
           {products.map((product) => (
             <MyCardProduct
-              key={product.id}
+              key={product._id}
               product={product}
               handleUpdateProduct={handleUpdateProduct}
               handleDeleteProduct={handleDeleteProduct}
@@ -119,7 +122,7 @@ const ProductPage = () => {
           ))}
         </Grid>
       </Box>
-    </div>
+    </>
   );
 };
 
