@@ -1,0 +1,23 @@
+{
+    "common": {
+      "button": {
+        "save": "Save",
+        "delete": "Delete"
+      }
+    },
+    "home": {
+      "title": "TP 3 - Integration"
+    },
+    "developerCard": {
+        "designer": "Designer",
+        "developerFemale": "Developer",
+        "developer": "Developer"
+    },
+    "workDescription": {
+      "title": "Description",
+      "description": "React.js, commonly referred to as simply React, is a JavaScript library used for building user interfaces. Each React web application is composed of reusable components that make up different parts of the user interface – we can have a separate component for our navigation bar, one for the footer, another for the main content, and so on. You will have a better understanding of this as we get to the section where we need to work with components."
+  }
+
+
+  }
+  

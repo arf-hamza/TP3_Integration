@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import MyMenu from "@/components/molecules/my-menu/my-menu";
+import "@/app/globals.css";
 import {
-    APICategory,
   getApiCategory,
   postApiCategory,
   putApiCategory,
@@ -12,16 +13,16 @@ import {
   Box,
   Typography,
   Button,
+  Card,
+  CardContent,
   Grid,
 } from "@mui/material";
 import MyCardCategory from "@/components/molecules/card-category/my-card";
-import { Console } from "console";
+import { APICategory } from "@/api/category.api";
 
-export interface CategoryListProps {
-  categories: APICategory[];
-}
-const CategoryList = (props: CategoryListProps) => {
-  const [categories, setCategories] = useState<APICategory[]>(props.categories);
+
+const CategoryPage = () => {
+  const [categories, setCategories] = useState<APICategory[]>([]);
 
   useEffect(() => {
     fetchCategories();
@@ -29,7 +30,6 @@ const CategoryList = (props: CategoryListProps) => {
 
   const fetchCategories = async () => {
     try {
-      console.log("fetchCategories");
       const response = await getApiCategory();
       setCategories(response);
     } catch (error) {
@@ -39,7 +39,6 @@ const CategoryList = (props: CategoryListProps) => {
 
   const handleDeleteCategory = async (categoryId: string) => {
     try {
-      console.log("handleDeleteCategory");
       await deleteApiCategory(categoryId);
       fetchCategories();
     } catch (error) {
@@ -49,7 +48,6 @@ const CategoryList = (props: CategoryListProps) => {
 
   const handleAddCategory = async () => {
     try {
-      console.log("handleAddCategory");
       const category: APICategory = {
         _id: "",
         name: "Nouvelle catégorie",
@@ -63,7 +61,6 @@ const CategoryList = (props: CategoryListProps) => {
 
   const handleUpdateCategory = async (category: APICategory) => {
     try {
-      console.log("handleUpdateCategory");
       await putApiCategory(category._id, category);
       fetchCategories();
     } catch (error) {
@@ -73,6 +70,7 @@ const CategoryList = (props: CategoryListProps) => {
 
   return (
     <Box>
+      <MyMenu />
       <Box
         sx={{
           backgroundColor: "black",
@@ -84,7 +82,7 @@ const CategoryList = (props: CategoryListProps) => {
         <Typography color="white" variant="h4">
           Liste des catégories
         </Typography>
-        <Button variant="contained" color="primary" href = "/categories/new">
+        <Button variant="contained" color="primary" onClick={handleAddCategory}>
           Ajouter une catégorie
         </Button>
       </Box>
@@ -104,4 +102,4 @@ const CategoryList = (props: CategoryListProps) => {
   );
 };
 
-export default CategoryList;
+export default CategoryPage;
