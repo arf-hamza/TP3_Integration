@@ -1,4 +1,3 @@
-
 import "./globals.css";
 import MyMenu from "@/components/molecules/my-menu/my-menu";
 

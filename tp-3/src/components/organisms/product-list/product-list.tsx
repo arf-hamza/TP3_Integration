@@ -48,12 +48,13 @@ const ProductList = (props: ProductListProps) => {
   const handleAddProduct = async () => {
     try {
       const product: APIProduct = {
-        _id: "",
-        title: "Nouveaux Produits",
-        description: "Nouveaux Produits",
-        price: 0,
-        categoryId: "",
-        userId: "",
+          _id: "",
+          title: "Nouveaux Produits",
+          description: "Nouveaux Produits",
+          price: 0,
+          categoryId: "",
+          userId: "",
+          isSold: false
       };
       await postApiProduct(product);
       fetchProducts();
@@ -86,7 +87,7 @@ const ProductList = (props: ProductListProps) => {
         <Typography color="white" variant="h4">
           Liste des Produits
         </Typography>
-        <Button variant="contained" color="primary" onClick={() => (window.location.href = "/newProduct")}>
+        <Button variant="contained" color="primary" onClick={() => {window.location.href = "/newProduct";}}>
           Ajouter un Produit
         </Button>
       </Box>

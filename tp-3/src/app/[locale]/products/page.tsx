@@ -1,7 +1,11 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import "@/app/globals.css";
 import {
+  Card,
+  CardContent,
+  Typography,
   Button,
   Box,
   Grid,
@@ -11,18 +15,17 @@ import {
   postApiProduct,
   putApiProduct,
   deleteApiProduct,
-} from "../../api/product.api";
+} from "@/api/product.api";
 import MyMenu from "@/components/molecules/my-menu/my-menu";
-import MyCardProduct from "../../components/molecules/card-product/my-card";
+import MyCardProduct from "@/components/molecules/card-product/my-card";
 
 interface Product {
-  _id: string;
+  id: string;
   title: string;
   description: string;
   price: number;
   categoryId: string;
   userId: string;
-  isSold: boolean;
 }
 
 const ProductPage = () => {
@@ -59,7 +62,7 @@ const ProductPage = () => {
         title: "Nouveau produit",
         description: "Description du nouveau produit",
         price: 10,
-        categoryId: "",
+        categoryId: "1",
         userId: "1",
       };
       await postApiProduct(product);
@@ -74,11 +77,11 @@ const ProductPage = () => {
     try {
       const product = {
         id: productId,
-        title: "",
+        title: "Produit modifié",
         description: "Description du produit modifié",
         price: 20,
-        categoryId: "",
-        userId: "",
+        categoryId: "1",
+        userId: "1",
       };
       await putApiProduct(productId, product);
       // Actualiser la liste des produits après la modification
@@ -96,35 +99,19 @@ const ProductPage = () => {
           backgroundColor: "black",
           minHeight: "100vh",
           padding: "20px",
-          marginTop: "50px"
+          marginTop: "50px",
         }}
       >
-        <Box
-          sx={{
-            textAlign: "center",
-            marginTop: 6,
-            marginBottom: 3,
-            width: "100%"
-          }}
-        >
-        <Button variant="contained" onClick={handleAddProduct} 
-          sx={{
-            ":hover":{
-              bgcolor: "lightgray",
-              color: "black"
-            },
-            backgroundColor: "#333",
-            padding: 1,
-            width: "50%"
-          }}
-        >
+        <Typography color="white" variant="h4">
+          Liste des produits
+        </Typography>
+        <Button variant="contained" color="primary" onClick={handleAddProduct}>
           Ajouter un produit
         </Button>
-        </Box>
         <Grid container spacing={6}>
           {products.map((product) => (
             <MyCardProduct
-              key={product._id}
+              key={product.id}
               product={product}
               handleUpdateProduct={handleUpdateProduct}
               handleDeleteProduct={handleDeleteProduct}
