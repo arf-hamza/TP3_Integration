@@ -14,15 +14,12 @@ const CategoryPage = () => {
     const [categories, setCategories] = useState<APICategory[]>([]);
 
     const handleAddCategory = async (newCategory: APICategory) => {
-        console.log("handleAddCategory");
         try {
             const category: APICategory = {
                 _id: "",
                 name: newCategory.name,
             };
-            console.log("category", category);
             await postApiCategory(category);
-            console.log("Catégorie ajoutée avec succès");
            } catch (error) {
             console.error("Erreur lors de l'ajout de la catégorie :", error);
         }
