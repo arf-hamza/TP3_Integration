@@ -1,84 +1,44 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import MyMenu from "@/components/molecules/my-menu/my-menu";
 import {
+    APICategory,
     postApiCategory,
 } from "../../../api/category.api";
 import {
     Box,
     Typography,
-    Button,
 } from "@mui/material";
-import { APICategory } from "../../../api/category.api";
+import CategoryForm from "@/components/organisms/category-form/category-form";
 
 const CategoryPage = () => {
     const [categories, setCategories] = useState<APICategory[]>([]);
 
-    const handleAddCategory = async () => {
+    const handleAddCategory = async (newCategory: APICategory) => {
+        console.log("handleAddCategory");
         try {
             const category: APICategory = {
                 _id: "",
-                name: "Nouvelle catégorie",
+                name: newCategory.name,
             };
+            console.log("category", category);
             await postApiCategory(category);
+            console.log("Catégorie ajoutée avec succès");
            } catch (error) {
             console.error("Erreur lors de l'ajout de la catégorie :", error);
         }
     };
 
 return (
-    <Box sx={{ textAlign:"center"}}>
-        <MyMenu />
-        <Box sx={{ marginTop: "100px" }}>
-            <Typography variant="h3" align="center">
-            Nouvelle Catégorie
-            </Typography>
-        </Box>
-        <Box sx={{ marginTop: "70px" }}>  
-            <input
-                type="text"
-                placeholder="Nouvelle catégorie"
-                style={{
-                width: "50%",
-                height: "40px",
-                padding: "10px",
-                fontSize: "16px",
-                backgroundColor: "black",
-                borderColor: "gray",
-                color: "white",
-                }}
-            />
-        </Box>    
-
-        <Box sx={{ marginTop: "70px" }}>
-            <Button
-                variant="contained"
-                color="inherit"
-                onClick={handleAddCategory}
-                style={{
-                    backgroundColor: "gray",
-                    color: "white",
-                    borderRadius: "0",
-                    width: "200px",
-                  }}
-            >
-                Save
-            </Button>
-            <Button
-                variant="contained"
-                color="error"
-             
-                style={{
-                    backgroundColor: "white",
-                    color: "gray",
-                    borderRadius: "0",
-                    width: "200px",
-                  }}
-            >
-                Cancel
-            </Button>
-        </Box>
-    </Box>
+    <Box sx={{ marginTop: "100px", textAlign: "center" }}>
+    <Typography variant="h4" component="h1" gutterBottom>
+    Nouvelle Catégorie
+    </Typography>
+        <CategoryForm
+        id=""
+        name=""
+        onCategoryAction={handleAddCategory}
+        />
+  </Box>
 );
 };
 

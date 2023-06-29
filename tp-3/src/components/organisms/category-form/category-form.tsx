@@ -15,7 +15,7 @@ import { APICategory } from "../../../api/category.api";
 export interface CategoryFormProps {
     id?: string;
     name?: string;
-    onUpdateCategory: (category: APICategory) => void;
+    onCategoryAction: (category: APICategory) => void;
 }
 
 const CategoryForm = (props:CategoryFormProps) => {
@@ -28,7 +28,7 @@ const CategoryForm = (props:CategoryFormProps) => {
           _id: props.id || "",
           name: name,
         };
-        props.onUpdateCategory(updatedCategory);
+        props.onCategoryAction(updatedCategory);
         setSuccessMessage("Category saved successfully!");
       };
 

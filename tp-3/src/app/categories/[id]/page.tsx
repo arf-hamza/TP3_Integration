@@ -8,7 +8,6 @@ import {
 import {
     Box,
     Typography,
-    Button,
 } from "@mui/material";
 import CategoryForm from "@/components/organisms/category-form/category-form";
 
@@ -48,13 +47,13 @@ const DetailCategoryPage = (props: DetailCategoryPageProps) => {
     return (
         <Box sx={{ marginTop: "100px", textAlign: "center" }}>
         <Typography variant="h4" component="h1" gutterBottom>
-          Modificar a Categoria
+        Modifier la Catégorie 
         </Typography>
         {category && (
           <CategoryForm
             id={category._id}
             name={category.name}
-            onUpdateCategory={handleUpdateCategory}
+            onCategoryAction={handleUpdateCategory}
           />
         )}
       </Box>
