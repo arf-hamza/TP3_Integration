@@ -18,12 +18,13 @@ export interface DetailCategoryPageProps {
       };
 }
 const DetailCategoryPage = (props: DetailCategoryPageProps) => {
-    const [category, setCategory] = useState<APICategory>();
+    const [category, setCategory] = useState<APICategory | undefined>();
     const id = props.params.id;
+
     // Execute the fetchCategory function only once, when the component is mounted
     useEffect(() => {
         fetchCategory();
-    }, []);
+    },);
 
     const fetchCategory = async () => {
         try {
@@ -34,21 +35,29 @@ const DetailCategoryPage = (props: DetailCategoryPageProps) => {
         }
     };
     
-    const handleUpdateCategory = async (category: APICategory) => {
+    const handleUpdateCategory = async (updatedCategory: APICategory) => {
         try {
-            await putApiCategory(id, category);
+            await putApiCategory(updatedCategory._id, updatedCategory);
+            console.log("Catégorie mise à jour avec succès");
+            setCategory(updatedCategory);
         } catch (error) {
-            console.error("Erreur lors de la modification de la catégorie :", error);
+            console.error("error", error);      
         }
     };
 
     return (
-        <Box sx={{ marginTop: "100px", textAlign:"center"}}>
-            <Typography variant="h4" component="h1" gutterBottom>
-            Modifier la Catégorie 
-            </Typography>
-          <CategoryForm id={category?._id} name={category?.name}/>
-        </Box>
+        <Box sx={{ marginTop: "100px", textAlign: "center" }}>
+        <Typography variant="h4" component="h1" gutterBottom>
+          Modificar a Categoria
+        </Typography>
+        {category && (
+          <CategoryForm
+            id={category._id}
+            name={category.name}
+            onUpdateCategory={handleUpdateCategory}
+          />
+        )}
+      </Box>
       );
 }
 

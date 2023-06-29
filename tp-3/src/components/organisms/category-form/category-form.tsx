@@ -7,50 +7,64 @@ import {
 import {
     Box,
     Button,
+    Grid,
+    TextField,
 } from "@mui/material";
 import { APICategory } from "../../../api/category.api";
-import { Form } from "react-router-dom";
 
 export interface CategoryFormProps {
     id?: string;
     name?: string;
+    onUpdateCategory: (category: APICategory) => void;
 }
 
 const CategoryForm = (props:CategoryFormProps) => {
+    const [name, setName] = useState(props.name || "");
+    const [successMessage, setSuccessMessage] = useState("");
 
-    const handleUpdateCategory = async (category: APICategory) => {
-        try {
-            await putApiCategory(category._id, category);
-        } catch (error) {
-            console.error("Erreur lors de la modification de la catégorie :", error);
-        }
-    };
+
+    const handleUpdateCategory = () => {
+        const updatedCategory: APICategory = {
+          _id: props.id || "",
+          name: name,
+        };
+        props.onUpdateCategory(updatedCategory);
+        setSuccessMessage("Category saved successfully!");
+      };
 
     return (
         <form >
-            <Box sx={{ marginTop: "70px", textAlign:"center"}}>
-            <Box>
-                <input
-                    type="text"
-                    placeholder="Catégorie"
+            <Box sx={{ marginTop: "70px", 
+                        textAlign:"center",
+                    }}>
+                <Grid item xs={12} sx={{ marginBottom: "20px" }}>
+                <TextField
+                    id="name"
+                    label=""
+                    variant="outlined"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     style={{
                         width: "50%",
                         height: "40px",
-                        padding: "10px",
+                        padding: "5px",
                         fontSize: "16px",
-                        backgroundColor: "black",
-                        borderColor: "gray",
-                        color: "white",
-                    }}
-                    value={props.name}
+                      }}
+                      InputProps={{
+                        style: {
+                          backgroundColor: "black",
+                          color: "white",
+                          border: "1px solid gray",
+                        },
+                      }}
                 />
-            </Box>
+            </Grid>
 
             <Box sx={{ marginTop: "70px" }}>
                 <Button
                     variant="contained"
                     color="inherit"
-                    onClick={() => handleUpdateCategory}
+                    onClick={handleUpdateCategory}
                     style={{
                         backgroundColor: "gray",
                         color: "white",
@@ -75,6 +89,9 @@ const CategoryForm = (props:CategoryFormProps) => {
                 </Button>
             </Box>
             </Box>
+        {successMessage && (
+        <p style={{ color: "green" }}>{successMessage}</p>
+        )}
         </form>
     );
 }
