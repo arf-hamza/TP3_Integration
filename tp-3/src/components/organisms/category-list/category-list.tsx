@@ -15,6 +15,7 @@ import {
   Grid,
 } from "@mui/material";
 import MyCardCategory from "@/components/molecules/card-category/my-card";
+import { Console } from "console";
 
 export interface CategoryListProps {
   categories: APICategory[];
@@ -79,7 +80,7 @@ const CategoryList = (props: CategoryListProps) => {
         <Typography color="white" variant="h4">
           Liste des catégories
         </Typography>
-        <Button variant="contained" color="primary" onClick={() => (window.location.href = "/newCategory")}>
+        <Button variant="contained" color="primary" href = "/categories/new">
           Ajouter une catégorie
         </Button>
       </Box>

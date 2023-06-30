@@ -1,83 +1,63 @@
-import React, { useState } from "react";
-import MyMenu from "@/components/molecules/my-menu/my-menu";
-import "../app/globals.css";
-import { Box, Typography, Button } from "@mui/material";
-import { useRouter } from "next/router";
+"use client"
+import React, { useState, useEffect } from "react";
+import {
+    APICategory,
+    getCategoryById,
+    putApiCategory,
+} from "../../../api/category.api";
+import {
+    Box,
+    Typography,
+} from "@mui/material";
+import CategoryForm from "@/components/organisms/category-form/category-form";
 
-interface CategoryPageProps {
+export interface DetailCategoryPageProps {
     params: {
-        _id: string;
-    }
+        id: string;
+      };
+}
+const DetailCategoryPage = (props: DetailCategoryPageProps) => {
+    const [category, setCategory] = useState<APICategory | undefined>();
+    const id = props.params.id;
+
+    // Execute the fetchCategory function only once, when the component is mounted
+    useEffect(() => {
+        fetchCategory();
+    },);
+
+    const fetchCategory = async () => {
+        try {
+            const response = await getCategoryById(id);
+            setCategory(response);
+        } catch (error) {
+            console.error("Erreur lors de la récupération de la catégorie :", error);
+        }
+    };
+    
+    const handleUpdateCategory = async (updatedCategory: APICategory) => {
+        try {
+            await putApiCategory(updatedCategory._id, updatedCategory);
+            console.log("Catégorie mise à jour avec succès");
+            setCategory(updatedCategory);
+        } catch (error) {
+            console.error("error", error);      
+        }
+    };
+
+    return (
+        <Box sx={{ marginTop: "100px", textAlign: "center" }}>
+        <Typography variant="h4" component="h1" gutterBottom>
+        Modifier la Catégorie 
+        </Typography>
+        {category && (
+          <CategoryForm
+            id={category._id}
+            name={category.name}
+            onCategoryAction={handleUpdateCategory}
+          />
+        )}
+      </Box>
+      );
 }
 
-const CategoryPage = ({ params } : CategoryPageProps) => {
-  const id = params._id;
-  const [categories, setCategories] = useState([]);
-  const router = useRouter();
-
-  const handleUpdateCategory = async () => {
-    try {
-      // Perform your update logic here
-      router.push("/category");
-    } catch (error) {
-      console.error("Erreur lors de la modification de la catégorie :", error);
-    }
-  };
-
-  return (
-    <Box sx={{ textAlign: "center" }}>
-      <MyMenu />
-      <Box sx={{ marginTop: "100px" }}>
-        <Typography variant="h3" align="center">
-          Modifier la Catégorie
-        </Typography>
-      </Box>
-      <Box sx={{ marginTop: "70px" }}>
-        <input
-          type="text"
-          placeholder="Catégorie"
-          style={{
-            width: "50%",
-            height: "40px",
-            padding: "10px",
-            fontSize: "16px",
-            backgroundColor: "black",
-            borderColor: "gray",
-            color: "white",
-          }}
-        />
-      </Box>
-
-      <Box sx={{ marginTop: "70px" }}>
-        <Button
-          variant="contained"
-          color="inherit"
-          onClick={handleUpdateCategory}
-          style={{
-            backgroundColor: "gray",
-            color: "white",
-            borderRadius: "0",
-            width: "200px",
-          }}
-        >
-          Save
-        </Button>
-        <Button
-          variant="contained"
-          color="error"
-          onClick={() => router.push("/category")}
-          style={{
-            backgroundColor: "white",
-            color: "gray",
-            borderRadius: "0",
-            width: "200px",
-          }}
-        >
-          Cancel
-        </Button>
-      </Box>
-    </Box>
-  );
-};
-
-export default CategoryPage;
+export default DetailCategoryPage;
