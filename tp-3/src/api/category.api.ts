@@ -23,6 +23,16 @@ export async function getApiCategory() {
   }
 }
 
+export async function getCategoryById(id: string) {
+  try {
+    const response = await fetch("https://api-without-authorisation.onrender.com/categories/" + id);
+    const jsonData = await response.json();
+    return jsonData as APICategory;
+  } catch (error) {
+    console.error("Erreur lors de la récupération de la catégorie :", error);
+    throw error; // Vous pouvez choisir de rejeter l'erreur ou de la gérer différemment selon vos besoins
+  }
+}
 
 export async function postApiCategory(body: APICategory) {
   try {

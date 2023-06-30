@@ -26,7 +26,7 @@ export default function MyCardCategory({
             <Button
               variant="contained"
               color="inherit"
-              onClick={() => (window.location.href = "/editCategory")}
+              href = {`/categories/${category._id}`}
             >
               Modifier
             </Button>

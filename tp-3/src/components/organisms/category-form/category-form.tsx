@@ -1,53 +1,70 @@
 "use client";
 
 import React, { useState } from "react";
-import "../app/globals.css";
 import {
     putApiCategory,
 } from "../../../api/category.api";
 import {
     Box,
     Button,
+    Grid,
+    TextField,
 } from "@mui/material";
 import { APICategory } from "../../../api/category.api";
-import { useRouter } from "next/router";
 
-const CategoryForm = () => {
-    const [categories, setCategories] = useState<APICategory[]>([]);
-    const router = useRouter();
+export interface CategoryFormProps {
+    id?: string;
+    name?: string;
+    onCategoryAction: (category: APICategory) => void;
+}
 
-    const handleUpdateCategory = async (category: APICategory) => {
-        try {
-            await putApiCategory(category._id, category);
-            router.push("/category");
-        } catch (error) {
-            console.error("Erreur lors de la modification de la catégorie :", error);
-        }
-    };
+const CategoryForm = (props:CategoryFormProps) => {
+    const [name, setName] = useState(props.name || "");
+    const [successMessage, setSuccessMessage] = useState("");
+
+
+    const handleUpdateCategory = () => {
+        const updatedCategory: APICategory = {
+          _id: props.id || "",
+          name: name,
+        };
+        props.onCategoryAction(updatedCategory);
+        setSuccessMessage("Category saved successfully!");
+      };
 
     return (
-        <>
-            <Box sx={{ marginTop: "70px" }}>
-                <input
-                    type="text"
-                    placeholder="Catégorie"
+        <form >
+            <Box sx={{ marginTop: "70px", 
+                        textAlign:"center",
+                    }}>
+                <Grid item xs={12} sx={{ marginBottom: "20px" }}>
+                <TextField
+                    id="name"
+                    label=""
+                    variant="outlined"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     style={{
                         width: "50%",
                         height: "40px",
-                        padding: "10px",
+                        padding: "5px",
                         fontSize: "16px",
-                        backgroundColor: "black",
-                        borderColor: "gray",
-                        color: "white",
-                    }}
+                      }}
+                      InputProps={{
+                        style: {
+                          backgroundColor: "black",
+                          color: "white",
+                          border: "1px solid gray",
+                        },
+                      }}
                 />
-            </Box>
+            </Grid>
 
             <Box sx={{ marginTop: "70px" }}>
                 <Button
                     variant="contained"
                     color="inherit"
-                    onClick={() => handleUpdateCategory}
+                    onClick={handleUpdateCategory}
                     style={{
                         backgroundColor: "gray",
                         color: "white",
@@ -60,7 +77,7 @@ const CategoryForm = () => {
                 <Button
                     variant="contained"
                     color="error"
-                    onClick={() => router.push("/category")}
+                    href="/categories"
                     style={{
                         backgroundColor: "white",
                         color: "gray",
@@ -71,9 +88,12 @@ const CategoryForm = () => {
                     Cancel
                 </Button>
             </Box>
-        </>
+            </Box>
+        {successMessage && (
+        <p style={{ color: "green" }}>{successMessage}</p>
+        )}
+        </form>
     );
 }
 
 export default CategoryForm;
-
