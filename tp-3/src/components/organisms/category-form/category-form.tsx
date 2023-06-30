@@ -2,15 +2,13 @@
 
 import React, { useState } from "react";
 import {
-    putApiCategory,
-} from "../../../api/category.api";
-import {
     Box,
     Button,
     Grid,
     TextField,
 } from "@mui/material";
-import { APICategory } from "../../../api/category.api";
+import { APICategory } from "@/api/category.api";
+import { useTranslations } from "next-intl";
 
 export interface CategoryFormProps {
     id?: string;
@@ -21,7 +19,7 @@ export interface CategoryFormProps {
 const CategoryForm = (props:CategoryFormProps) => {
     const [name, setName] = useState(props.name || "");
     const [successMessage, setSuccessMessage] = useState("");
-
+    const t = useTranslations();
 
     const handleUpdateCategory = () => {
         const updatedCategory: APICategory = {
@@ -29,7 +27,7 @@ const CategoryForm = (props:CategoryFormProps) => {
           name: name,
         };
         props.onCategoryAction(updatedCategory);
-        setSuccessMessage("Category saved successfully!");
+        setSuccessMessage(t("category.modifymessage"));
       };
 
     return (
@@ -45,7 +43,7 @@ const CategoryForm = (props:CategoryFormProps) => {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     style={{
-                        width: "50%",
+                        width: "80%",
                         height: "40px",
                         padding: "5px",
                         fontSize: "16px",
@@ -72,7 +70,7 @@ const CategoryForm = (props:CategoryFormProps) => {
                         width: "200px",
                     }}
                 >
-                    Save
+                    {t("category.saveButton")}
                 </Button>
                 <Button
                     variant="contained"
@@ -85,7 +83,7 @@ const CategoryForm = (props:CategoryFormProps) => {
                         width: "200px",
                     }}
                 >
-                    Cancel
+                    {t("category.cancelButton")}
                 </Button>
             </Box>
             </Box>

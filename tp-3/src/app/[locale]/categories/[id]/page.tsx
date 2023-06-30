@@ -4,12 +4,13 @@ import {
     APICategory,
     getCategoryById,
     putApiCategory,
-} from "../../../api/category.api";
+} from "@/api/category.api";
 import {
     Box,
     Typography,
 } from "@mui/material";
 import CategoryForm from "@/components/organisms/category-form/category-form";
+import { useTranslations } from "next-intl";
 
 export interface DetailCategoryPageProps {
     params: {
@@ -19,6 +20,7 @@ export interface DetailCategoryPageProps {
 const DetailCategoryPage = (props: DetailCategoryPageProps) => {
     const [category, setCategory] = useState<APICategory | undefined>();
     const id = props.params.id;
+    const t = useTranslations();
 
     // Execute the fetchCategory function only once, when the component is mounted
     useEffect(() => {
@@ -47,7 +49,7 @@ const DetailCategoryPage = (props: DetailCategoryPageProps) => {
     return (
         <Box sx={{ marginTop: "100px", textAlign: "center" }}>
         <Typography variant="h4" component="h1" gutterBottom>
-        Modifier la Catégorie 
+            {t("category.modifyTitle")}         
         </Typography>
         {category && (
           <CategoryForm
