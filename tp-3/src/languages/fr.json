@@ -16,6 +16,13 @@
     "workDescription": {
         "title": "Description",
         "description": "React.js, communément appelé simplement React, est une bibliothèque JavaScript  utilisée pour construire des interfaces utilisateur. Chaque application web React est composée de composants  réutilisables qui constituent des parties de l’interface utilisateur – nous pouvons avoir un composant distinct pour notre barre de navigation, un pour le pied de page, un autre pour le contenu principal, et ainsi de suite. Vous comprendrez mieux cela lorsque nous arriverons à la section où nous devons travailler avec des composants."
+    },
+    "category": {
+        "modifyTitle": "Modifier la Catégorie",
+        "saveButton": "Sauvegarder",
+        "cancelButton": "Annuler",
+        "modifyMessage": "La catégorie a été modifiée avec succès",
+        "newmodifyTitle": "Nouvelle Catégorie"
     }
 
   }
