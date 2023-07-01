@@ -27,7 +27,7 @@ const CategoryForm = (props:CategoryFormProps) => {
           name: name,
         };
         props.onCategoryAction(updatedCategory);
-        setSuccessMessage(t("category.modifymessage"));
+        setSuccessMessage(t("category.modifyMessage"));
       };
 
     return (

@@ -21,7 +21,7 @@
         "modifyTitle": "Modifier la Catégorie",
         "saveButton": "Sauvegarder",
         "cancelButton": "Annuler",
-        "modifymessage": "La catégorie a été modifiée avec succès",
+        "modifyMessage": "La catégorie a été modifiée avec succès",
         "newmodifyTitle": "Nouvelle Catégorie"
     }
 
