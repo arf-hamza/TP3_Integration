@@ -1,4 +1,5 @@
 {
+ feat/modal_confirmation
   "common": {
     "button": {
       "save": "Sauvegarder",
@@ -33,6 +34,7 @@
       "description": "Etes-vous sûr que vous voulez supprimer cette catégorie?",
       "btnConfirm": "Supprimer",
       "btnCancel": "Annuler"
+
     }
   }
 }

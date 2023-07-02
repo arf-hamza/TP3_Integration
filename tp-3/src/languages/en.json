@@ -1,4 +1,5 @@
 {
+ feat/modal_confirmation
   "common": {
     "button": {
       "save": "Save",
@@ -34,6 +35,7 @@
       "btnConfirm": "Delete",
       "btnCancel": "Cancel"
     }
+
   }
 }
   

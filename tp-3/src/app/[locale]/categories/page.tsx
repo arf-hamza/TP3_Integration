@@ -1,9 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import MyMenu from "@/components/molecules/my-menu/my-menu";
-import "@/app/globals.css";
 import {
+  APICategory,
   getApiCategory,
   postApiCategory,
   putApiCategory,
@@ -18,7 +17,7 @@ import {
   Grid,
 } from "@mui/material";
 import MyCardCategory from "@/components/molecules/card-category/my-card";
-import { APICategory } from "@/api/category.api";
+import CategoryList from "@/components/organisms/category-list/category-list";
 
 
 const CategoryPage = () => {
@@ -70,34 +69,7 @@ const CategoryPage = () => {
 
   return (
     <Box>
-      <MyMenu />
-      <Box
-        sx={{
-          backgroundColor: "black",
-          minHeight: "10vh",
-          padding: "20px",
-          marginTop: "50px",
-        }}
-      >
-        <Typography color="white" variant="h4">
-          Liste des catégories
-        </Typography>
-        <Button variant="contained" color="primary" onClick={handleAddCategory}>
-          Ajouter une catégorie
-        </Button>
-      </Box>
-      <Box mt={2} sx={{ backgroundColor: "black" }} >
-        <Grid container spacing={6} padding={5}>
-          {categories.map((category) => (
-            <MyCardCategory
-              key={category._id}
-              category={category}
-              handleUpdateCategory={handleUpdateCategory}
-              handleDeleteCategory={handleDeleteCategory}
-            />
-          ))}
-        </Grid>
-      </Box>
+      <CategoryList categories={categories} />
     </Box>
   );
 };
