@@ -1,29 +1,40 @@
 {
-    "common": {
-        "button": {
-            "save": "Sauvegarder",
-            "delete": "Supprimer"
-        }
-    },
-    "home": {
-        "title": "TP 3 - Intégration"
-    },
-    "developerCard": {
-        "designer": "Designer",
-        "developerFemale": "Développeuse",
-        "developer": "Développeur"
-    },
-    "workDescription": {
-        "title": "Description",
-        "description": "React.js, communément appelé simplement React, est une bibliothèque JavaScript  utilisée pour construire des interfaces utilisateur. Chaque application web React est composée de composants  réutilisables qui constituent des parties de l’interface utilisateur – nous pouvons avoir un composant distinct pour notre barre de navigation, un pour le pied de page, un autre pour le contenu principal, et ainsi de suite. Vous comprendrez mieux cela lorsque nous arriverons à la section où nous devons travailler avec des composants."
-    },
-    "category": {
-        "modifyTitle": "Modifier la Catégorie",
-        "saveButton": "Sauvegarder",
-        "cancelButton": "Annuler",
-        "modifyMessage": "La catégorie a été modifiée avec succès",
-        "newmodifyTitle": "Nouvelle Catégorie"
+ feat/modal_confirmation
+  "common": {
+    "button": {
+      "save": "Sauvegarder",
+      "delete": "Supprimer"
     }
+  },
+  "home": {
+    "title": "TP 3 - Intégration"
+  },
+  "developerCard": {
+    "designer": "Designer",
+    "developerFemale": "Développeuse",
+    "developer": "Développeur"
+  },
+  "workDescription": {
+    "title": "Description",
+    "description": "React.js, communément appelé simplement React, est une bibliothèque JavaScript  utilisée pour construire des interfaces utilisateur. Chaque application web React est composée de composants  réutilisables qui constituent des parties de l’interface utilisateur – nous pouvons avoir un composant distinct pour notre barre de navigation, un pour le pied de page, un autre pour le contenu principal, et ainsi de suite. Vous comprendrez mieux cela lorsque nous arriverons à la section où nous devons travailler avec des composants."
+  },
+  "modalConfirmation": {
+    "description": "Confirmer?",
+    "btnConfirm": "Oui",
+    "btnCancel": "Annuler"
+  },
+  "product": {
+    "modal": {
+      "description": "Etes-vous sûr que vous voulez supprimer ce produit?",
+      "btnConfirm": "Supprimer"
+    }
+  },
+  "category": {
+    "modal": {
+      "description": "Etes-vous sûr que vous voulez supprimer cette catégorie?",
+      "btnConfirm": "Supprimer",
+      "btnCancel": "Annuler"
 
+    }
   }
-  
+}
