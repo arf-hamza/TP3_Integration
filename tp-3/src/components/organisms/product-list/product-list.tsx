@@ -63,9 +63,19 @@ const ProductList = (props: ProductListProps) => {
     }
   };
 
-  const handleUpdateProduct = async (product: APIProduct) => {
+  const handleUpdateProduct = async (productId: string) => {
     try {
-      await putApiProduct(product._id, product);
+      const updatedProduct: APIProduct = {
+        title: "",
+        description: "",
+        price: 0,
+        categoryId: "",
+        userId: "",
+        _id: "",
+        isSold: false
+      };
+  
+      await putApiProduct(productId, updatedProduct);
       fetchProducts();
     } catch (error) {
       console.error("Erreur lors de la modification de Produit :", error);

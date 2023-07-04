@@ -1,7 +1,14 @@
-"use client"
+"use client";
 import React from "react";
-import { Card, CardContent, Typography, Button, Box, Grid } from "@mui/material";
-import { APICategory } from "../../../api/category.api";
+import {
+  Card,
+  CardContent,
+  Typography,
+  Button,
+  Box,
+  Grid,
+} from "@mui/material";
+import { APICategory } from "@/api/category.api";
 
 interface MyCardCategoryProps {
   category: APICategory;
@@ -26,7 +33,7 @@ export default function MyCardCategory({
             <Button
               variant="contained"
               color="inherit"
-              href = {`/categories/${category._id}`}
+              href={`/categories/${category._id}`}
             >
               Modifier
             </Button>
@@ -43,5 +50,3 @@ export default function MyCardCategory({
     </Grid>
   );
 }
-
-
