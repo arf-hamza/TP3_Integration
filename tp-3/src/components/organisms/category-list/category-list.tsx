@@ -15,7 +15,6 @@ import {
   Grid,
 } from "@mui/material";
 import MyCardCategory from "@/components/molecules/card-category/my-card";
-import { Console } from "console";
 
 export interface CategoryListProps {
   categories: APICategory[];

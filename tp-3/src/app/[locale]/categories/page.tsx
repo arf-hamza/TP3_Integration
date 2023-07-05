@@ -10,13 +10,7 @@ import {
 } from "@/api/category.api";
 import {
   Box,
-  Typography,
-  Button,
-  Card,
-  CardContent,
-  Grid,
 } from "@mui/material";
-import MyCardCategory from "@/components/molecules/card-category/my-card";
 import CategoryList from "@/components/organisms/category-list/category-list";
 
 

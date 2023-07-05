@@ -8,7 +8,7 @@ import {
   putApiProduct,
   deleteApiProduct,
   getApiProducts,
-} from "../../../api/product.api";
+} from "@/api/product.api";
 import {
   Box,
   Typography,
