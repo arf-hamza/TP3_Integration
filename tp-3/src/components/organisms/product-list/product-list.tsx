@@ -63,7 +63,6 @@ const ProductList = (props: ProductListProps) => {
     }
   };
 
-
   const handleUpdateProduct = async (productId: string) => {
     try {
       const updatedProduct: APIProduct = {

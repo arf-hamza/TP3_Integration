@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useEffect, useState } from "react";
 import "@/app/globals.css";
 import {
@@ -8,26 +7,30 @@ import {
   Box,
   Grid,
 } from "@mui/material";
+
 import {
   getApiProducts,
   postApiProduct,
   putApiProduct,
   deleteApiProduct,
-  APIProduct,
 } from "@/api/product.api";
 import MyCardProduct from "@/components/molecules/card-product/my-card";
+import Pagination from "@mui/material/Pagination";
 
 interface Product {
-  id: string;
+  _id: string;
   title: string;
   description: string;
   price: number;
   categoryId: string;
   userId: string;
+  isSold: boolean;
 }
 
 const ProductPage = () => {
-  const [products, setProducts] = useState<APIProduct[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const productsPerPage = 6;
 
   useEffect(() => {
     // Récupérer la liste des produits au chargement de la page
@@ -56,18 +59,22 @@ const ProductPage = () => {
   const handleAddProduct = async () => {
     try {
       const product = {
-        _id: '',
-        isSold: false,
+        _id: "",
         title: "Nouveau produit",
         description: "Description du nouveau produit",
         price: 10,
-        categoryId: "1",
-        userId: "1",
+        categoryId: "",
+        userId: "",
+        isSold: false,
       };
-
       await postApiProduct(product);
       // Actualiser la liste des produits après l'ajout
       fetchProducts();
+      // Recalculer le nombre de pages après l'ajout
+      const totalPages = Math.ceil((products.length + 1) / productsPerPage);
+      if (currentPage > totalPages) {
+        setCurrentPage(totalPages);
+      }
     } catch (error) {
       console.error("Erreur lors de l'ajout du produit :", error);
     }
@@ -77,12 +84,12 @@ const ProductPage = () => {
     try {
       const product = {
         _id: productId,
-        title: "Produit modifié",
+        title: "",
         description: "Description du produit modifié",
         price: 20,
-        categoryId: "1",
-        userId: "1",
-        isSold: false
+        categoryId: "",
+        userId: "",
+        isSold: true,
       };
       await putApiProduct(productId, product);
       // Actualiser la liste des produits après la modification
@@ -92,8 +99,23 @@ const ProductPage = () => {
     }
   };
 
+  const handlePageChange = (
+    event: React.ChangeEvent<unknown>,
+    page: number
+  ) => {
+    setCurrentPage(page);
+  };
+
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = products.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct
+  );
+
   return (
-    <>
+    <div>
+      <MyMenu />
       <Box
         sx={{
           backgroundColor: "black",
@@ -102,14 +124,33 @@ const ProductPage = () => {
           marginTop: "50px",
         }}
       >
-        <Typography color="white" variant="h4">
-          Liste des produits
-        </Typography>
-        <Button variant="contained" color="primary" onClick={handleAddProduct}>
-          Ajouter un produit
-        </Button>
+        <Box
+          sx={{
+            textAlign: "center",
+            marginTop: 6,
+            marginBottom: 3,
+            width: "100%",
+          }}
+        >
+          <Button
+            variant="contained"
+            onClick={handleAddProduct}
+            sx={{
+              ":hover": {
+                bgcolor: "lightgray",
+                color: "black",
+              },
+              backgroundColor: "#333",
+              padding: 1,
+              width: "50%",
+              marginBottom: "30px",
+            }}
+          >
+            Ajouter un produit
+          </Button>
+        </Box>
         <Grid container spacing={6}>
-          {products.map((product) => (
+          {currentProducts.map((product) => (
             <MyCardProduct
               key={product._id}
               product={product}
@@ -118,8 +159,18 @@ const ProductPage = () => {
             />
           ))}
         </Grid>
+        <Box
+          sx={{ display: "flex", justifyContent: "center", marginTop: "20px" }}
+        >
+          <Pagination
+            className="white-pagination"
+            count={Math.ceil(products.length / productsPerPage)}
+            page={currentPage}
+            onChange={handlePageChange}
+          />
+        </Box>
       </Box>
-    </>
+    </div>
   );
 };
 
