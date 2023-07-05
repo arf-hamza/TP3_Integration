@@ -15,7 +15,6 @@ import {
   Grid,
 } from "@mui/material";
 import MyCardCategory from "@/components/molecules/card-category/my-card";
-import { Console } from "console";
 
 export interface CategoryListProps {
   categories: APICategory[];
@@ -58,9 +57,13 @@ const CategoryList = (props: CategoryListProps) => {
     }
   };
 
-  const handleUpdateCategory = async (category: APICategory) => {
+  const handleUpdateCategory = async (categoryId: string) => {
     try {
-      await putApiCategory(category._id, category);
+      const category = {
+        _id: categoryId,
+        name: "Nouvelle catégorie",
+      };
+      await putApiCategory(categoryId, category);
       fetchCategories();
     } catch (error) {
       console.error("Erreur lors de la modification de la catégorie :", error);
@@ -80,7 +83,7 @@ const CategoryList = (props: CategoryListProps) => {
         <Typography color="white" variant="h4">
           Liste des catégories
         </Typography>
-        <Button variant="contained" color="primary" href = "/categories/new">
+        <Button variant="contained" color="primary" onClick={() => (window.location.href = "/newCategory")}>
           Ajouter une catégorie
         </Button>
       </Box>

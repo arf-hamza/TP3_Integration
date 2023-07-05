@@ -3,8 +3,6 @@
 import React, { useEffect, useState } from "react";
 import "@/app/globals.css";
 import {
-  Card,
-  CardContent,
   Typography,
   Button,
   Box,
@@ -17,7 +15,6 @@ import {
   deleteApiProduct,
   APIProduct,
 } from "@/api/product.api";
-import MyMenu from "@/components/molecules/my-menu/my-menu";
 import MyCardProduct from "@/components/molecules/card-product/my-card";
 
 interface Product {
