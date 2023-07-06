@@ -1,13 +1,19 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Button, Box, Grid } from "@mui/material";
+import "@/app/globals.css";
+import {
+  Typography,
+  Button,
+  Box,
+  Grid,
+} from "@mui/material";
+
 import {
   getApiProducts,
   postApiProduct,
   putApiProduct,
   deleteApiProduct,
 } from "@/api/product.api";
-import MyMenu from "@/components/molecules/my-menu/my-menu";
 import MyCardProduct from "@/components/molecules/card-product/my-card";
 import Pagination from "@mui/material/Pagination";
 

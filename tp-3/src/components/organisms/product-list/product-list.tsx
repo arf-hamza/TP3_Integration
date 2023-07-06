@@ -81,6 +81,7 @@ const ProductList = (props: ProductListProps) => {
       console.error("Erreur lors de la modification de Produit :", error);
     }
   };
+  
 
    
 
@@ -104,12 +105,14 @@ const ProductList = (props: ProductListProps) => {
       <Box mt={2} sx={{ backgroundColor: "black" }} >
         <Grid container spacing={6} padding={5}>
           {products.map((product) => (
+            
             <MyCardProduct
               key={product._id}
               product={product}
-              handleUpdateProduct={handleUpdateProduct}
               handleDeleteProduct={handleDeleteProduct}
+              handleUpdateProduct={handleUpdateProduct}
             />
+
           ))}
         </Grid>
       </Box>
