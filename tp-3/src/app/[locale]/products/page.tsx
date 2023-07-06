@@ -1,13 +1,16 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import "@/app/globals.css";
 import {
-  Typography,
   Button,
   Box,
   Grid,
+  TextField,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Typography,
 } from "@mui/material";
-
 import {
   getApiProducts,
   postApiProduct,
@@ -31,6 +34,8 @@ const ProductPage = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 6;
+  const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
+  const [selectedProductId, setSelectedProductId] = useState("");
 
   useEffect(() => {
     // Récupérer la liste des produits au chargement de la page
@@ -60,8 +65,8 @@ const ProductPage = () => {
     try {
       const product = {
         _id: "",
-        title: "Nouveau produit",
-        description: "Description du nouveau produit",
+        title: "",
+        description: "",
         price: 10,
         categoryId: "",
         userId: "",
@@ -85,7 +90,7 @@ const ProductPage = () => {
       const product = {
         _id: productId,
         title: "",
-        description: "Description du produit modifié",
+        description: "",
         price: 20,
         categoryId: "",
         userId: "",
@@ -113,9 +118,18 @@ const ProductPage = () => {
     indexOfLastProduct
   );
 
+  const openDeleteDialog = (productId: string) => {
+    setIsDeleteDialogOpen(true);
+    setSelectedProductId(productId);
+  };
+
+  const closeDeleteDialog = () => {
+    setIsDeleteDialogOpen(false);
+    setSelectedProductId("");
+  };
+
   return (
     <div>
-      <MyMenu />
       <Box
         sx={{
           backgroundColor: "black",
@@ -155,7 +169,7 @@ const ProductPage = () => {
               key={product._id}
               product={product}
               handleUpdateProduct={handleUpdateProduct}
-              handleDeleteProduct={handleDeleteProduct}
+              handleDeleteProduct={openDeleteDialog}
             />
           ))}
         </Grid>
@@ -170,6 +184,28 @@ const ProductPage = () => {
           />
         </Box>
       </Box>
+      <Dialog open={isDeleteDialogOpen} onClose={closeDeleteDialog}>
+        <DialogContent sx={{ backgroundColor: "darkred", color: "white" }}>
+          <Typography variant="body1">
+            Êtes-vous sûr de vouloir supprimer ce produit ?
+          </Typography>
+        </DialogContent>
+
+        <DialogActions sx={{ backgroundColor: "black", color: "white" }}>
+          <Button
+            onClick={() => {
+              handleDeleteProduct(selectedProductId);
+              closeDeleteDialog();
+            }}
+            color="error"
+          >
+            Supprimer
+          </Button>
+          <Button onClick={closeDeleteDialog} color="inherit">
+            Annuler
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 };
