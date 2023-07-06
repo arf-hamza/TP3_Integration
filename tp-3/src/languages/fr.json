@@ -29,6 +29,11 @@
     }
   },
   "category": {
+    "modifyTitle": "Modifier la Catégorie",
+    "saveButton": "Sauvegarder",
+    "cancelButton": "Annuler",
+    "modifyMessage": "La catégorie a été modifiée avec succès",
+    "newmodifyTitle": "Nouvelle Catégorie",
     "modal": {
       "description": "Etes-vous sûr que vous voulez supprimer cette catégorie?",
       "btnConfirm": "Supprimer",
