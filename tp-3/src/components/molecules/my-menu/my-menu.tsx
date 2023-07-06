@@ -19,8 +19,15 @@ export default function MyMenu() {
   const pathChangeLanguage = usePathname();
   
   const changeLanguage = (language: string) => {
-    window.location.href = `/${language}`
+    const currentUrl = window.location.href;
+    const newUrl = currentUrl.replace(`${getCurrentLanguage()}`, `/${language}`);
+    window.location.href = newUrl
   };
+  
+  const getCurrentLanguage = () =>{
+    const segments = window.location.pathname.split('/')
+    return segments[1]
+  }
   
   const isActivePage = (page: string) => {
     return pathname === page;
