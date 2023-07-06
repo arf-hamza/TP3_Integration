@@ -29,12 +29,16 @@
     }
   },
   "category": {
+    "modifyTitle": "Modify category",
+    "saveButton": "Save",
+    "cancelButton": "Cancel",
+    "modifyMessage": "Category saved successfully!",
+    "newmodifyTitle": "New category",
     "modal": {
       "description": "Are you sure you want to delete this category?",
       "btnConfirm": "Delete",
       "btnCancel": "Cancel"
     }
-
   }
 }
   
