@@ -9,11 +9,7 @@ import {
   APICategory,
 } from "@/api/category.api";
 
-import { Box, Button, Grid } from "@mui/material";
-
-
 import CategoryList from "@/components/organisms/category-list/category-list";
-import MyCardCategory from "@/components/molecules/card-category/my-card";
 
 interface Category {
   _id: string;
@@ -59,7 +55,6 @@ const CategoryPage = () => {
 
   const handleUpdateCategory = async (category: APICategory) => {
     try {
-     
       await putApiCategory(category._id, category);
       fetchCategories();
     } catch (error) {
@@ -70,10 +65,8 @@ const CategoryPage = () => {
   return (
     <div>
       <CategoryList categories={categories} />
-   
     </div>
   );
 };
 
 export default CategoryPage;
-

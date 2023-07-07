@@ -8,15 +8,8 @@ import {
   putApiCategory,
   deleteApiCategory,
 } from "@/api/category.api";
-import {
-  Box,
-  Typography,
-  Button,
-  Grid,
-  Pagination,
-} from "@mui/material";
+import { Box, Typography, Button, Grid, Pagination } from "@mui/material";
 import MyCardCategory from "@/components/molecules/card-category/my-card";
-
 
 export interface CategoryListProps {
   categories: APICategory[];
@@ -102,7 +95,7 @@ const CategoryList = (props: CategoryListProps) => {
         <Typography color="white" variant="h4">
           Liste des catégories
         </Typography>
-        
+
         <Box
           sx={{
             textAlign: "center",
@@ -114,7 +107,7 @@ const CategoryList = (props: CategoryListProps) => {
           <Button
             variant="contained"
             onClick={handleAddCategory}
-            href = "/categories/new"
+            href="/categories/new"
             sx={{
               ":hover": {
                 bgcolor: "lightgray",
@@ -144,7 +137,7 @@ const CategoryList = (props: CategoryListProps) => {
         <Box
           sx={{ display: "flex", justifyContent: "center", marginTop: "20px" }}
         >
-          <Pagination 
+          <Pagination
             className="white-pagination"
             count={Math.ceil(categories.length / categoriesPerPage)}
             page={currentPage}
