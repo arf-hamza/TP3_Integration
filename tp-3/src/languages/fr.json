@@ -25,7 +25,9 @@
   "product": {
     "modal": {
       "description": "Etes-vous sûr que vous voulez supprimer ce produit?",
-      "btnConfirm": "Supprimer"
+      "btnConfirm": "Supprimer",
+      "btnCancel": "Annuler"
+
     }
   },
   "category": {

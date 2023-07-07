@@ -25,7 +25,8 @@
   "product": {
     "modal": {
       "description": "Are you sure you want to delete this product?",
-      "btnConfirm": "Delete"
+      "btnConfirm": "Delete",
+      "btnCancel" : "Cancel"
     }
   },
   "category": {

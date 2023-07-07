@@ -19,6 +19,8 @@ import {
 } from "@/api/product.api";
 import MyCardProduct from "@/components/molecules/card-product/my-card";
 import Pagination from "@mui/material/Pagination";
+import ModalConfirmation from "@/components/molecules/modal/modal-confirmation";
+import { useTranslations } from 'next-intl';
 
 interface Product {
   _id: string;
@@ -128,6 +130,8 @@ const ProductPage = () => {
     setSelectedProductId("");
   };
 
+  const t = useTranslations();
+
   return (
     <div>
       <Box
@@ -184,30 +188,20 @@ const ProductPage = () => {
           />
         </Box>
       </Box>
-      <Dialog open={isDeleteDialogOpen} onClose={closeDeleteDialog}>
-        <DialogContent sx={{ backgroundColor: "darkred", color: "white" }}>
-          <Typography variant="body1">
-            Êtes-vous sûr de vouloir supprimer ce produit ?
-          </Typography>
-        </DialogContent>
-
-        <DialogActions sx={{ backgroundColor: "black", color: "white" }}>
-          <Button
-            onClick={() => {
-              handleDeleteProduct(selectedProductId);
-              closeDeleteDialog();
-            }}
-            color="error"
-          >
-            Supprimer
-          </Button>
-          <Button onClick={closeDeleteDialog} color="inherit">
-            Annuler
-          </Button>
-        </DialogActions>
-      </Dialog>
+      <ModalConfirmation
+        isOpen={isDeleteDialogOpen}
+        description={t('product.modal.description')}
+        btnConfirmText={t('product.modal.btnConfirm')}
+        btnCancelText={t('product.modal.btnCancel')}
+        onConfirm={() => {
+          handleDeleteProduct(selectedProductId);
+          closeDeleteDialog();
+        }}
+        onClose={closeDeleteDialog}
+      />
     </div>
   );
 };
 
 export default ProductPage;
+
