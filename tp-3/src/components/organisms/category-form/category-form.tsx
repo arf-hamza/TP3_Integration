@@ -30,6 +30,8 @@ const CategoryForm = (props:CategoryFormProps) => {
         setSuccessMessage(t("category.modifyMessage"));
       };
 
+
+
     return (
         <form >
             <Box sx={{ marginTop: "70px", 

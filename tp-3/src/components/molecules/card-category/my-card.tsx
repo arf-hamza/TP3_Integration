@@ -12,7 +12,7 @@ import { APICategory } from "@/api/category.api";
 
 interface MyCardCategoryProps {
   category: APICategory;
-  handleUpdateCategory: (categoryId: string) => void;
+  handleUpdateCategory: (category: APICategory) => void;  
   handleDeleteCategory: (categoryId: string) => void;
 }
 
@@ -33,8 +33,7 @@ export default function MyCardCategory({
             <Button
               variant="contained"
               color="inherit"
-              onClick={() => handleUpdateCategory(category._id)}
-            >
+              href={`/categories/${category._id}`}            >
               Modifier
             </Button>
             <Button

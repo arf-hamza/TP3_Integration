@@ -18,3 +18,9 @@ body {
 
     background-color: black;
 }
+
+.white-pagination{
+    color: white !important;
+    background-color: white;
+    border-radius: 10px;
+  }

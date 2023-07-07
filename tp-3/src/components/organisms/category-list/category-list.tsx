@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import {
-    APICategory,
+  APICategory,
   getApiCategory,
   postApiCategory,
   putApiCategory,
@@ -13,14 +13,19 @@ import {
   Typography,
   Button,
   Grid,
+  Pagination,
 } from "@mui/material";
 import MyCardCategory from "@/components/molecules/card-category/my-card";
+
 
 export interface CategoryListProps {
   categories: APICategory[];
 }
+
 const CategoryList = (props: CategoryListProps) => {
   const [categories, setCategories] = useState<APICategory[]>(props.categories);
+  const [currentPage, setCurrentPage] = useState(1);
+  const categoriesPerPage = 8;
 
   useEffect(() => {
     fetchCategories();
@@ -52,23 +57,37 @@ const CategoryList = (props: CategoryListProps) => {
       };
       await postApiCategory(category);
       fetchCategories();
+      const totalPages = Math.ceil((categories.length + 1) / categoriesPerPage);
+      if (currentPage > totalPages) {
+        setCurrentPage(totalPages);
+      }
     } catch (error) {
       console.error("Erreur lors de l'ajout de la catégorie :", error);
     }
   };
 
-  const handleUpdateCategory = async (categoryId: string) => {
+  const handleUpdateCategory = async (category: APICategory) => {
     try {
-      const category = {
-        _id: categoryId,
-        name: "Nouvelle catégorie",
-      };
-      await putApiCategory(categoryId, category);
+      await putApiCategory(category._id, category);
       fetchCategories();
     } catch (error) {
       console.error("Erreur lors de la modification de la catégorie :", error);
     }
   };
+
+  const handlePageChange = (
+    event: React.ChangeEvent<unknown>,
+    page: number
+  ) => {
+    setCurrentPage(page);
+  };
+
+  const indexOfLastCategories = currentPage * categoriesPerPage;
+  const indexOfFirstCategories = indexOfLastCategories - categoriesPerPage;
+  const currentCategories = categories.slice(
+    indexOfFirstCategories,
+    indexOfLastCategories
+  );
 
   return (
     <Box>
@@ -83,13 +102,37 @@ const CategoryList = (props: CategoryListProps) => {
         <Typography color="white" variant="h4">
           Liste des catégories
         </Typography>
-        <Button variant="contained" color="primary" onClick={() => (window.location.href = "/newCategory")}>
-          Ajouter une catégorie
-        </Button>
+        
+        <Box
+          sx={{
+            textAlign: "center",
+            marginTop: 6,
+            marginBottom: 3,
+            width: "100%",
+          }}
+        >
+          <Button
+            variant="contained"
+            onClick={handleAddCategory}
+            href = "/categories/new"
+            sx={{
+              ":hover": {
+                bgcolor: "lightgray",
+                color: "black",
+              },
+              backgroundColor: "#333",
+              padding: 1,
+              width: "50%",
+              marginBottom: "30px",
+            }}
+          >
+            Ajouter une categorie
+          </Button>
+        </Box>
       </Box>
-      <Box mt={2} sx={{ backgroundColor: "black" }} >
+      <Box mt={2} sx={{ backgroundColor: "black" }}>
         <Grid container spacing={6} padding={5}>
-          {categories.map((category) => (
+          {currentCategories.map((category) => (
             <MyCardCategory
               key={category._id}
               category={category}
@@ -98,6 +141,16 @@ const CategoryList = (props: CategoryListProps) => {
             />
           ))}
         </Grid>
+        <Box
+          sx={{ display: "flex", justifyContent: "center", marginTop: "20px" }}
+        >
+          <Pagination 
+            className="white-pagination"
+            count={Math.ceil(categories.length / categoriesPerPage)}
+            page={currentPage}
+            onChange={handlePageChange}
+          />
+        </Box>
       </Box>
     </Box>
   );

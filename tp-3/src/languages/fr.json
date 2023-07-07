@@ -32,7 +32,7 @@
     "modifyTitle": "Modifier la Catégorie",
     "saveButton": "Sauvegarder",
     "cancelButton": "Annuler",
-    "modifyMessage": "La catégorie a été modifiée avec succès",
+    "modifyMessage": "La catégorie a été enregistrer avec succès",
     "newmodifyTitle": "Nouvelle Catégorie",
     "modal": {
       "description": "Etes-vous sûr que vous voulez supprimer cette catégorie?",
