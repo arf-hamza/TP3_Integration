@@ -1,7 +1,6 @@
 "use client";
-
+import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
-import "./globals.css";
 import ModifyProduct from '@/components/molecules/modify-product/modify-product';
 
 export default async function ModProduct() {

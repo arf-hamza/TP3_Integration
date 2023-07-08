@@ -73,7 +73,7 @@ export default function AddProduct(/*props : ProductProps*/) {
             alignItems="flex-start"
             spacing={1}
           >
-            <Button variant="outlined" color="error">
+            <Button variant="outlined" color="error" href="/products">
               ANNULER
             </Button>
             <Button

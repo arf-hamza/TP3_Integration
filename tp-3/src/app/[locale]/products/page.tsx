@@ -3,13 +3,7 @@ import React, { useEffect, useState } from "react";
 import {
   Button,
   Box,
-  Grid,
-  TextField,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  Typography,
+  Grid
 } from "@mui/material";
 import {
   getApiProducts,
@@ -153,6 +147,7 @@ const ProductPage = () => {
           <Button
             variant="contained"
             onClick={handleAddProduct}
+            href="products/new"
             sx={{
               ":hover": {
                 bgcolor: "lightgray",

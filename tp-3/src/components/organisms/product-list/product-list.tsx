@@ -98,8 +98,22 @@ const ProductList = (props: ProductListProps) => {
         <Typography color="white" variant="h4">
           Liste des Produits
         </Typography>
-        <Button variant="contained" color="primary" onClick={() => {window.location.href = "/newProduct";}}>
-          Ajouter un Produit
+        <Button
+          variant="contained"
+          onClick={handleAddProduct}
+          href="/products/new"
+          sx={{
+            ":hover": {
+              bgcolor: "lightgray",
+              color: "black",
+            },
+            backgroundColor: "#333",
+            padding: 1,
+            width: "50%",
+            marginBottom: "30px",
+          }}
+        >
+          Ajouter une categorie
         </Button>
       </Box>
       <Box mt={2} sx={{ backgroundColor: "black" }} >
