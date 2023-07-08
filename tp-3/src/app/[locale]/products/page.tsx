@@ -1,26 +1,7 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import {
-  Button,
-  Box,
-  Grid,
-  TextField,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  Typography,
-} from "@mui/material";
-import {
-  getApiProducts,
-  postApiProduct,
-  putApiProduct,
-  deleteApiProduct,
-} from "@/api/product.api";
-import MyCardProduct from "@/components/molecules/card-product/my-card";
-import Pagination from "@mui/material/Pagination";
-import ModalConfirmation from "@/components/molecules/modal/modal-confirmation";
-import { useTranslations } from 'next-intl';
+import React, { useState, useEffect } from "react";
+import { getApiProducts, APIProduct } from "@/api/product.api";
+import ProductList from "@/components/organisms/product-list/product-list";
 
 interface Product {
   _id: string;
@@ -30,17 +11,13 @@ interface Product {
   categoryId: string;
   userId: string;
   isSold: boolean;
+  
 }
 
 const ProductPage = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 6;
-  const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
-  const [selectedProductId, setSelectedProductId] = useState("");
+  const [products, setProducts] = useState<APIProduct[]>([]);
 
   useEffect(() => {
-    // Récupérer la liste des produits au chargement de la page
     fetchProducts();
   }, []);
 
@@ -53,152 +30,9 @@ const ProductPage = () => {
     }
   };
 
-  const handleDeleteProduct = async (productId: string) => {
-    try {
-      await deleteApiProduct(productId);
-      // Actualiser la liste des produits après la suppression
-      fetchProducts();
-    } catch (error) {
-      console.error("Erreur lors de la suppression du produit :", error);
-    }
-  };
-
-  const handleAddProduct = async () => {
-    try {
-      const product = {
-        _id: "",
-        title: "",
-        description: "",
-        price: 10,
-        categoryId: "",
-        userId: "",
-        isSold: false,
-      };
-      await postApiProduct(product);
-      // Actualiser la liste des produits après l'ajout
-      fetchProducts();
-      // Recalculer le nombre de pages après l'ajout
-      const totalPages = Math.ceil((products.length + 1) / productsPerPage);
-      if (currentPage > totalPages) {
-        setCurrentPage(totalPages);
-      }
-    } catch (error) {
-      console.error("Erreur lors de l'ajout du produit :", error);
-    }
-  };
-
-  const handleUpdateProduct = async (productId: string) => {
-    try {
-      const product = {
-        _id: productId,
-        title: "",
-        description: "",
-        price: 20,
-        categoryId: "",
-        userId: "",
-        isSold: true,
-      };
-      await putApiProduct(productId, product);
-      // Actualiser la liste des produits après la modification
-      fetchProducts();
-    } catch (error) {
-      console.error("Erreur lors de la modification du produit :", error);
-    }
-  };
-
-  const handlePageChange = (
-    event: React.ChangeEvent<unknown>,
-    page: number
-  ) => {
-    setCurrentPage(page);
-  };
-
-  const indexOfLastProduct = currentPage * productsPerPage;
-  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = products.slice(
-    indexOfFirstProduct,
-    indexOfLastProduct
-  );
-
-  const openDeleteDialog = (productId: string) => {
-    setIsDeleteDialogOpen(true);
-    setSelectedProductId(productId);
-  };
-
-  const closeDeleteDialog = () => {
-    setIsDeleteDialogOpen(false);
-    setSelectedProductId("");
-  };
-
-  const t = useTranslations();
-
   return (
     <div>
-      <Box
-        sx={{
-          backgroundColor: "black",
-          minHeight: "100vh",
-          padding: "20px",
-          marginTop: "50px",
-        }}
-      >
-        <Box
-          sx={{
-            textAlign: "center",
-            marginTop: 6,
-            marginBottom: 3,
-            width: "100%",
-          }}
-        >
-          <Button
-            variant="contained"
-            onClick={handleAddProduct}
-            sx={{
-              ":hover": {
-                bgcolor: "lightgray",
-                color: "black",
-              },
-              backgroundColor: "#333",
-              padding: 1,
-              width: "50%",
-              marginBottom: "30px",
-            }}
-          >
-            Ajouter un produit
-          </Button>
-        </Box>
-        <Grid container spacing={6}>
-          {currentProducts.map((product) => (
-            <MyCardProduct
-              key={product._id}
-              product={product}
-              handleUpdateProduct={handleUpdateProduct}
-              handleDeleteProduct={openDeleteDialog}
-            />
-          ))}
-        </Grid>
-        <Box
-          sx={{ display: "flex", justifyContent: "center", marginTop: "20px" }}
-        >
-          <Pagination
-            className="white-pagination"
-            count={Math.ceil(products.length / productsPerPage)}
-            page={currentPage}
-            onChange={handlePageChange}
-          />
-        </Box>
-      </Box>
-      <ModalConfirmation
-        isOpen={isDeleteDialogOpen}
-        description={t('product.modal.description')}
-        btnConfirmText={t('product.modal.btnConfirm')}
-        btnCancelText={t('product.modal.btnCancel')}
-        onConfirm={() => {
-          handleDeleteProduct(selectedProductId);
-          closeDeleteDialog();
-        }}
-        onClose={closeDeleteDialog}
-      />
+      <ProductList products={products} />
     </div>
   );
 };
