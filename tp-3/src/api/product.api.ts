@@ -36,6 +36,16 @@ export async function getApiProducts(): Promise<APIProduct[]> {
   }
 }
 
+export async function getProductById(_id: string) {
+  try {
+    const response = await fetch("https://api-without-authorisation.onrender.com/products/" + _id);
+    const jsonData = await response.json();
+    return jsonData as APIProduct;
+  } catch (error) {
+    console.error("Erreur lors de la récupération du produit :", error);
+    throw error;
+  }
+}
 
 export async function postApiProduct(body: APIProduct) {
   try {
