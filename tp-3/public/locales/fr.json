@@ -1,0 +1,59 @@
+{
+    "header.home": "Accueil",
+    "header.products": "Produits",
+    "header.categories": "Catégories",
+
+    "home.aline": "Designer/Développeuse",
+    "home.jonathan": "Designer/Développeur",
+    "home.hamza": "Designer/Développeur",
+    "home.juliana": "Designer/Développeuse",
+    "home.stella": "Designer/Développeuse",
+    "home.title": "TP3 - Intégration Web",
+    "home.description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero atque illum minima, soluta totam, placeat architecto dolore voluptatibus commodi velit, est incidunt itaque quisquam maxime dolorum voluptates. Numquam, possimus corrupti.Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero atque illum minima, soluta totam, placeat architecto dolore voluptatibus commodi velit, est incidunt itaque quisquam maxime dolorum voluptates. Numquam, possimus corrupti.",
+
+    "categories.add": "AJOUTER UNE CATÉGORIE",
+    "categories.edit": "MODIFIER",
+    "categories.delete": "SUPPRIMER",
+
+    "products.add": "AJOUTER UN PRODUIT",
+    "products.edit": "MODIFIER",
+    "products.delete": "SUPPRIMER",
+
+    "deleteCategory.message": "Êtes vous sûr de vouloir supprimer cette catégorie?",
+    "deleteCategory.cancel": "Annuler",
+    "deleteCategory.confirm": "Supprimer",
+
+    "deleteProduct.message": "Êtes vous sûr de vouloir supprimer ce produit?",
+    "deleteProduct.cancel": "Annuler",
+    "deleteProduct.confirm": "Supprimer",
+
+    "newCategory.title": "Nouvelle Catégorie",
+    "newCategory.name": "Nom",
+    "newCategory.cancel": "Annuler",
+    "newCategory.create": "Créer",
+
+    "modifyCategory.title": "Modifier la Catégorie",
+    "modifyCategory.name": "Nom",
+    "modifyCategory.cancel": "Annuler",
+    "modifyCategory.save": "Sauvegarder",
+    "modifyCategory.success": "Catégorie modifiée avec succès!",
+
+    "newProduct.title": "Nouveau Produit",
+    "newProduct.name": "Nom",
+    "newProduct.price": "Prix",
+    "newProduct.category": "Catégorie",
+    "newProduct.creator": "Créateur",
+    "newProduct.description": "Description",
+    "newProduct.cancel": "Annuler",
+    "newProduct.create": "Créer",
+
+    "modifyProduct.title": "Modifier le Produit",
+    "modifyProduct.name": "Nom",
+    "modifyProduct.price": "Prix",
+    "modifyProduct.category": "Catégorie",
+    "modifyProduct.creator": "Créateur",
+    "modifyProduct.description": "Description",
+    "modifyProduct.cancel": "Annuler",
+    "modifyProduct.save": "Sauvegarder",
+    "modifyProduct.success": "Produit modifié avec succès!"
+}

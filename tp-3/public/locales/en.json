@@ -1,0 +1,59 @@
+{
+    "header.home": "Home",
+    "header.products": "Products",
+    "header.categories": "Categories",
+
+    "home.aline": "Designer/Developper",
+    "home.jonathan": "Designer/Developper",
+    "home.hamza": "Designer/Developper",
+    "home.juliana": "Designer/Developper",
+    "home.stella": "Designer/Developper",
+    "home.title": "TP3 - Web Integration",
+    "home.description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero atque illum minima, soluta totam, placeat architecto dolore voluptatibus commodi velit, est incidunt itaque quisquam maxime dolorum voluptates. Numquam, possimus corrupti.Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero atque illum minima, soluta totam, placeat architecto dolore voluptatibus commodi velit, est incidunt itaque quisquam maxime dolorum voluptates. Numquam, possimus corrupti.",
+
+    "categories.add": "ADD A CATEGORY",
+    "categories.edit": "EDIT",
+    "categories.delete": "DELETE",
+
+    "products.add": "ADD A PRODUCT",
+    "products.edit": "EDIT",
+    "products.delete": "DELETE",
+
+    "deleteCategory.message": "Are you sure you want to delete this category?",
+    "deleteCategory.cancel": "cancel",
+    "deleteCategory.confirm": "delete",
+
+    "deleteProduct.message": "Are you sure you want to delete this product?",
+    "deleteProduct.cancel": "cancel",
+    "deleteProduct.confirm": "delete",
+
+    "newCategory.title": "New Category",
+    "newCategory.name": "Name",
+    "newCategory.cancel": "Cancel",
+    "newCategory.create": "Create",
+
+    "modifyCategory.title": "Modify Category",
+    "modifyCategory.name": "Name",
+    "modifyCategory.cancel": "Cancel",
+    "modifyCategory.save": "Save",
+    "modifyCategory.success": "Category edited successfully!",
+
+    "newProduct.title": "New Product",
+    "newProduct.name": "Name",
+    "newProduct.price": "Price",
+    "newProduct.category": "Category",
+    "newProduct.creator": "Creator",
+    "newProduct.description": "Description",
+    "newProduct.cancel": "Cancel",
+    "newProduct.create": "Create",
+
+    "modifyProduct.title": "Modify Product",
+    "modifyProduct.name": "Name",
+    "modifyProduct.price": "Price",
+    "modifyProduct.category": "Category",
+    "modifyProduct.creator": "Creator",
+    "modifyProduct.description": "Description",
+    "modifyProduct.cancel": "Cancel",
+    "modifyProduct.save": "Save",
+    "modifyProduct.success": "Product edited successfully!"
+}

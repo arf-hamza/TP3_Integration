@@ -2,10 +2,12 @@
 import React, { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import { Box, Button, Grid, IconButton, Toolbar } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
+import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from "@mui/icons-material/Close";
 import Container from "@mui/material/Container";
 import { usePathname } from "next/navigation";
+
+import { useTranslation } from 'react-i18next';
 
 export default function MyMenu() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -20,6 +22,8 @@ export default function MyMenu() {
   
   const changeLanguage = (language: string) => {
   };
+
+  const { t, i18n} = useTranslation(['header']);
   
   const isActivePage = (page: string) => {
     return pathname === page;
@@ -41,7 +45,7 @@ export default function MyMenu() {
               },
             }}
           >
-            Accueil
+            {t('header.home')}
           </Box>
           <Box
             component="a"
@@ -56,7 +60,7 @@ export default function MyMenu() {
               },
             }}
           >
-            Produits
+            {t('header.products')}
           </Box>
           <Box
             component="a"
@@ -71,7 +75,7 @@ export default function MyMenu() {
               },
             }}
           >
-            Catégories
+            {t('header.categories')}
           </Box>
           <IconButton
             color="inherit"

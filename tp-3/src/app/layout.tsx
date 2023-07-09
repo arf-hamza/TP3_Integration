@@ -1,6 +1,7 @@
-
+"use client";
 import "./globals.css";
 import MyMenu from "@/components/molecules/my-menu/my-menu";
+import '../i18n/i18n';
 
 export const metadata = {
 
