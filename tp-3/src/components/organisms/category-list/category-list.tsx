@@ -90,6 +90,7 @@ const CategoryList = (props: CategoryListProps) => {
           minHeight: "10vh",
           padding: "20px",
           marginTop: "50px",
+          marginBottom: "50px",
         }}
       >
         <Typography color="white" variant="h4">
@@ -99,29 +100,26 @@ const CategoryList = (props: CategoryListProps) => {
         <Box
           sx={{
             textAlign: "center",
-            marginTop: 6,
-            marginBottom: 3,
+            marginBottom: 5,
             width: "100%",
           }}
+        ></Box>
+        <Button
+          variant="contained"
+          onClick={handleAddCategory}
+          href="/categories/new"
+          sx={{
+            ":hover": {
+              bgcolor: "lightgray",
+              color: "black",
+            },
+            backgroundColor: "#333",
+            padding: 1,
+            width: "50%",
+          }}
         >
-          <Button
-            variant="contained"
-            onClick={handleAddCategory}
-            href="/categories/new"
-            sx={{
-              ":hover": {
-                bgcolor: "lightgray",
-                color: "black",
-              },
-              backgroundColor: "#333",
-              padding: 1,
-              width: "50%",
-              marginBottom: "30px",
-            }}
-          >
-            Ajouter une categorie
-          </Button>
-        </Box>
+          Ajouter une categorie
+        </Button>
       </Box>
       <Box mt={2} sx={{ backgroundColor: "black" }}>
         <Grid container spacing={6} padding={5}>
@@ -135,7 +133,12 @@ const CategoryList = (props: CategoryListProps) => {
           ))}
         </Grid>
         <Box
-          sx={{ display: "flex", justifyContent: "center", marginTop: "20px" }}
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "20px",
+            marginBottom: "20px",
+          }}
         >
           <Pagination
             className="white-pagination"

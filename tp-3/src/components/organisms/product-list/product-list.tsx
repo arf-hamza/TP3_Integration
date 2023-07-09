@@ -19,7 +19,7 @@ export interface ProductListProps {
 const ProductList = (props: ProductListProps) => {
   const [products, setProducts] = useState<APIProduct[]>(props.products);
   const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 6;
+  const productsPerPage = 8;
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
   const [selectedProductId, setSelectedProductId] = useState("");
   const t = useTranslations();
@@ -116,6 +116,13 @@ const ProductList = (props: ProductListProps) => {
         <Typography color="white" variant="h4">
           Liste des Produits
         </Typography>
+        <Box
+          sx={{
+            textAlign: "center",
+            marginBottom: 5,
+            width: "100%",
+          }}
+        ></Box>
         <Button
           variant="contained"
           onClick={handleAddProduct}
@@ -128,14 +135,13 @@ const ProductList = (props: ProductListProps) => {
             backgroundColor: "#333",
             padding: 1,
             width: "50%",
-            marginBottom: "30px",
           }}
         >
           Ajouter un produit
         </Button>
       </Box>
-      <Box mt={2} sx={{ backgroundColor: "black" }}>
-        <Grid container spacing={6} padding={5}>
+      <Box mt={2} sx={{ backgroundColor: "black"  }}>
+        <Grid container spacing={6} padding={5} >
           {currentProducts.map((product) => (
             <React.Fragment key={product._id}>
               <MyCardProduct
@@ -159,7 +165,7 @@ const ProductList = (props: ProductListProps) => {
         </Grid>
       </Box>
       <Box
-        sx={{ display: "flex", justifyContent: "center", marginTop: "20px" }}
+        sx={{ display: "flex", justifyContent: "center", marginTop: "10px", marginBottom: "20px" }}
       >
         <Pagination
           className="white-pagination"

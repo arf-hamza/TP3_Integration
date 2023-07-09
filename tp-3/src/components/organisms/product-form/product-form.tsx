@@ -125,32 +125,31 @@ const ProductForm = (props: ProductFormProps) => {
               border: "1px solid gray",
             }}
           >
-          
             <MenuItem value="false">Non</MenuItem>
             <MenuItem value="true">Oui</MenuItem>
           </Select>
         </Grid>
         <Grid item xs={12} sx={{ marginBottom: "20px" }}>
           <TextField
-          id="categoryId"
-          label=""
-          variant="outlined"
-          value={categoryId}
-          onChange={(e) => setCategorie(e.target.value)}
-          style={{
-            width: "80%",
-            height: "40px",
-            padding: "5px",
-            fontSize: "16px",
-          }}
-          InputProps={{
-            style: {
-              backgroundColor: "black",
-              color: "white",
-              border: "1px solid gray",
-            },
-          }}
-        />
+            id="categoryId"
+            label=""
+            variant="outlined"
+            value={categoryId}
+            onChange={(e) => setCategorie(e.target.value)}
+            style={{
+              width: "80%",
+              height: "40px",
+              padding: "5px",
+              fontSize: "16px",
+            }}
+            InputProps={{
+              style: {
+                backgroundColor: "black",
+                color: "white",
+                border: "1px solid gray",
+              },
+            }}
+          />
         </Grid>
         <Box sx={{ marginTop: "70px" }}>
           <Button

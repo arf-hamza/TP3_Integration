@@ -21,7 +21,7 @@ const MyCardProduct = (props: MyCardProductProps) => {
   const { product, handleUpdateProduct, handleDeleteProduct } = props;
 
   return (
-    <Grid item key={product._id} xs={6}>
+    <Grid item key={product._id} xs={12} sm={6} md={4} lg={3}>
       <Card sx={{ margin: "16px", backgroundColor: "darkgray" }}>
         <CardContent>
           <Typography variant="h6">{product.title}</Typography>
