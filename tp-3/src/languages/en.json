@@ -23,6 +23,11 @@
     "btnCancel": "Cancel"
   },
   "product": {
+    "modifyTitle": "Edit Product",
+    "saveButton": "Save",
+    "cancelButton": "Cancel",
+    "modifyMessage": "Product saved successfully!",
+    "newmodifyTitle": "New Product",
     "modal": {
       "description": "Are you sure you want to delete this product?",
       "btnConfirm": "Delete",
