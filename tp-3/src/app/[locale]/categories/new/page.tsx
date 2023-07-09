@@ -11,7 +11,7 @@ import {
 import CategoryForm from "@/components/organisms/category-form/category-form";
 import { useTranslations } from "next-intl";
 
-const CategoryPage = () => {
+const NewCategoryPage = () => {
     const [categories, setCategories] = useState<APICategory[]>([]);
     const t = useTranslations();
 
@@ -41,4 +41,4 @@ return (
 );
 };
 
-export default CategoryPage;
+export default NewCategoryPage;

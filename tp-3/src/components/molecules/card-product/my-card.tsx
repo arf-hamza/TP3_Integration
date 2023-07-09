@@ -8,7 +8,6 @@ interface Product {
   description: string;
   price: number;
   categoryId: string;
-  userId: string;
   isSold: boolean;
 }
 
@@ -18,24 +17,23 @@ interface MyCardProductProps {
   handleDeleteProduct: (productId: string) => void;
 }
 
-export default function MyCardProduct(props: MyCardProductProps) {
+const MyCardProduct = (props: MyCardProductProps) => {
   const { product, handleUpdateProduct, handleDeleteProduct } = props;
 
   return (
-    <Grid item key={product._id} xs={6}>
+    <Grid item key={product._id} xs={12} sm={6} md={4} lg={3}>
       <Card sx={{ margin: "16px", backgroundColor: "darkgray" }}>
         <CardContent>
           <Typography variant="h6">{product.title}</Typography>
           <Typography variant="body2">{product.description}</Typography>
           <Typography variant="body2">Prix : {product.price} €</Typography>
-          <Typography variant="body2">UserId : {product.userId}</Typography>
           <Typography variant="body2">CategoryId : {product.categoryId}</Typography>
           <Typography variant="body2">isSold : {product.isSold ? "Yes" : "No"}</Typography>
-          <Box mt={2} display="flex" justifyContent="end">
+          <Box mt={2} display="flex" justifyContent="flex-end">
             <Button
               variant="contained"
               color="inherit"
-              onClick={() => handleUpdateProduct(product._id)}
+              href={`/products/${product._id}`}
             >
               Modifier
             </Button>
@@ -51,5 +49,6 @@ export default function MyCardProduct(props: MyCardProductProps) {
       </Card>
     </Grid>
   );
-}
+};
 
+export default MyCardProduct;

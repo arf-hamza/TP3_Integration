@@ -18,16 +18,20 @@
     "description": "React est une bibliothèque JavaScript pour créer des interfaces utilisateur interactives. TypeScript est une extension de JavaScript qui ajoute un typage statique au code. En combinant React avec TypeScript, nous bénéficions d'avantages tels qu'une détection d'erreurs plus rapide et une meilleure collaboration sur les grands projets. Next.js est un framework qui simplifie le développement d'applications React en offrant des fonctionnalités telles que le rendu côté serveur, la pré-rendu statique et le routage simplifié. Ensemble, React, TypeScript et Next.js fournissent une base solide pour la construction d'applications web modernes et évolutives. Nous réalisons notre travail avec cette nouvelle stack technologique."
   },
   "modalConfirmation": {
-    "description": "Confirmer?",
+    "description": "Confirmer ?",
     "btnConfirm": "Oui",
     "btnCancel": "Annuler"
   },
   "product": {
+    "modifyTitle": "Modifier le Produit",
+    "saveButton": "Sauvegarder",
+    "cancelButton": "Annuler",
+    "modifyMessage": "Le produit a été enregistré avec succès",
+    "newmodifyTitle": "Nouveau Produit",
     "modal": {
       "description": "Êtes-vous sûr que vous voulez supprimer ce produit?",
       "btnConfirm": "Supprimer",
       "btnCancel": "Annuler"
-
     }
   },
   "category": {
@@ -40,6 +44,12 @@
       "description": "Êtes-vous sûr que vous voulez supprimer cette catégorie?",
       "btnConfirm": "Supprimer",
       "btnCancel": "Annuler"
+    }
+  },
+  "validation": {
+    "errors": {
+      "required": "Ce champ est requis",
+      "positive": "Veuillez saisir un nombre positif"
     }
   }
 }
