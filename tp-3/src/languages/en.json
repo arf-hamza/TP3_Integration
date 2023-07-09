@@ -40,6 +40,12 @@
       "btnConfirm": "Delete",
       "btnCancel": "Cancel"
     }
+  },
+  "validation": {
+    "errors": {
+      "required": "This field is required",
+      "positive": "Please enter a positive number"
+    }
   }
 }
   
