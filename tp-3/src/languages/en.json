@@ -15,7 +15,7 @@
   },
   "workDescription": {
     "title": "Description",
-    "description": "React.js, commonly referred to as simply React, is a JavaScript library used for building user interfaces. Each React web application is composed of reusable components that make up different parts of the user interface – we can have a separate component for our navigation bar, one for the footer, another for the main content, and so on. You will have a better understanding of this as we get to the section where we need to work with components."
+    "description": "React is a JavaScript library for creating interactive user interfaces. TypeScript is an extension of JavaScript that adds static typing to the code. By combining React with TypeScript, we benefit from advantages such as faster error detection and improved collaboration on large projects. Next.js is a framework that simplifies the development of React applications by offering features such as server-side rendering, static pre-rendering, and simplified routing. Together, React, TypeScript, and Next.js provide a solid foundation for building modern and scalable web applications. We are carrying out our work using this new technological stack."
   },
   "modalConfirmation" : {
     "description": "Confirm?",
