@@ -46,10 +46,11 @@ export async function postApiCategory(body: APICategory): Promise<void>  {
       body: JSON.stringify(body),
     });
     const jsonData = await response.json();
-    console.log("Réponse de l'API après l'ajout :", jsonData);
+    console.log("Réponse de l'API après l'ajout de categorie :", jsonData);
     return jsonData; // Renvoyer les données de réponse si nécessaire
   } catch (error) {
     console.error("Erreur lors de l'ajout d'une catégorie :", error);
+    throw error;
   }
 }
 
