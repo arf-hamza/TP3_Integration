@@ -15,7 +15,7 @@
   },
   "workDescription": {
     "title": "Description",
-    "description": "React.js, communément appelé simplement React, est une bibliothèque JavaScript  utilisée pour construire des interfaces utilisateur. Chaque application web React est composée de composants  réutilisables qui constituent des parties de l’interface utilisateur – nous pouvons avoir un composant distinct pour notre barre de navigation, un pour le pied de page, un autre pour le contenu principal, et ainsi de suite. Vous comprendrez mieux cela lorsque nous arriverons à la section où nous devons travailler avec des composants."
+    "description": "React est une bibliothèque JavaScript pour créer des interfaces utilisateur interactives. TypeScript est une extension de JavaScript qui ajoute un typage statique au code. En combinant React avec TypeScript, nous bénéficions d'avantages tels qu'une détection d'erreurs plus rapide et une meilleure collaboration sur les grands projets. Next.js est un framework qui simplifie le développement d'applications React en offrant des fonctionnalités telles que le rendu côté serveur, la pré-rendu statique et le routage simplifié. Ensemble, React, TypeScript et Next.js fournissent une base solide pour la construction d'applications web modernes et évolutives. Nous réalisons notre travail avec cette nouvelle stack technologique."
   },
   "modalConfirmation": {
     "description": "Confirmer?",
@@ -24,7 +24,7 @@
   },
   "product": {
     "modal": {
-      "description": "Etes-vous sûr que vous voulez supprimer ce produit?",
+      "description": "Êtes-vous sûr que vous voulez supprimer ce produit?",
       "btnConfirm": "Supprimer",
       "btnCancel": "Annuler"
 
@@ -37,7 +37,7 @@
     "modifyMessage": "La catégorie a été enregistrée avec succès",
     "newmodifyTitle": "Nouvelle Catégorie",
     "modal": {
-      "description": "Etes-vous sûr que vous voulez supprimer cette catégorie?",
+      "description": "Êtes-vous sûr que vous voulez supprimer cette catégorie?",
       "btnConfirm": "Supprimer",
       "btnCancel": "Annuler"
     }
