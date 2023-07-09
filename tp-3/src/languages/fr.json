@@ -15,10 +15,10 @@
   },
   "workDescription": {
     "title": "Description",
-    "description": "React.js, communément appelé simplement React, est une bibliothèque JavaScript  utilisée pour construire des interfaces utilisateur. Chaque application web React est composée de composants  réutilisables qui constituent des parties de l’interface utilisateur – nous pouvons avoir un composant distinct pour notre barre de navigation, un pour le pied de page, un autre pour le contenu principal, et ainsi de suite. Vous comprendrez mieux cela lorsque nous arriverons à la section où nous devons travailler avec des composants."
+    "description": "React.js, communément appelé simplement React, est une bibliothèque JavaScript utilisée pour construire des interfaces utilisateur. Chaque application web React est composée de composants réutilisables qui constituent des parties de l’interface utilisateur – nous pouvons avoir un composant distinct pour notre barre de navigation, un pour le pied de page, un autre pour le contenu principal, et ainsi de suite. Vous comprendrez mieux cela lorsque nous arriverons à la section où nous devons travailler avec des composants."
   },
   "modalConfirmation": {
-    "description": "Confirmer?",
+    "description": "Confirmer ?",
     "btnConfirm": "Oui",
     "btnCancel": "Annuler"
   },
@@ -26,13 +26,12 @@
     "modifyTitle": "Modifier le Produit",
     "saveButton": "Sauvegarder",
     "cancelButton": "Annuler",
-    "modifyMessage": "Le produit a été enregistrée avec succès",
-    "newmodifyTitle": "Nouveaux Produit",
+    "modifyMessage": "Le produit a été enregistré avec succès",
+    "newmodifyTitle": "Nouveau Produit",
     "modal": {
-      "description": "Etes-vous sûr que vous voulez supprimer ce produit?",
+      "description": "Êtes-vous sûr de vouloir supprimer ce produit ?",
       "btnConfirm": "Supprimer",
       "btnCancel": "Annuler"
-
     }
   },
   "category": {
@@ -42,9 +41,15 @@
     "modifyMessage": "La catégorie a été enregistrée avec succès",
     "newmodifyTitle": "Nouvelle Catégorie",
     "modal": {
-      "description": "Etes-vous sûr que vous voulez supprimer cette catégorie?",
+      "description": "Êtes-vous sûr de vouloir supprimer cette catégorie ?",
       "btnConfirm": "Supprimer",
       "btnCancel": "Annuler"
+    }
+  },
+  "validation": {
+    "errors": {
+      "required": "Ce champ est requis",
+      "positive": "Veuillez saisir un nombre positif"
     }
   }
 }

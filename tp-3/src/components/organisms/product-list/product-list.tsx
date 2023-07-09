@@ -46,22 +46,7 @@ const ProductList = (props: ProductListProps) => {
     }
   };
 
-  const handleAddProduct = async () => {
-    try {
-      const product: APIProduct = {
-        _id: "",
-        title: "Nouveaux Produits",
-        description: "Nouveaux Produits",
-        price: 0,
-        categoryId: "",
-        isSold: false,
-      };
-      await postApiProduct(product);
-      await fetchProducts(); // Rechargement de la liste des produits
-    } catch (error) {
-      console.error("Erreur lors de l'ajout de Produit :", error);
-    }
-  };
+
   
   const handleUpdateProduct = async (productId: string) => {
     try {
@@ -125,7 +110,7 @@ const ProductList = (props: ProductListProps) => {
         ></Box>
         <Button
           variant="contained"
-          onClick={handleAddProduct}
+          onClick={() => {}}
           href="/products/new"
           sx={{
            ":hover": {

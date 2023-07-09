@@ -42,22 +42,7 @@ const CategoryList = (props: CategoryListProps) => {
     }
   };
 
-  const handleAddCategory = async () => {
-    try {
-      const category: APICategory = {
-        _id: "",
-        name: "Nouvelle catégorie",
-      };
-      await postApiCategory(category);
-      await fetchCategories();
-       const totalPages = Math.ceil((categories.length + 1) / categoriesPerPage);
-      if (currentPage > totalPages) {
-        setCurrentPage(totalPages);
-      } 
-    } catch (error) {
-      console.error("Erreur lors de l'ajout de la catégorie :", error);
-    }
-  };
+
 
   const handleUpdateCategory = async (category: APICategory) => {
     try {
@@ -106,7 +91,7 @@ const CategoryList = (props: CategoryListProps) => {
         ></Box>
         <Button
           variant="contained"
-          onClick={handleAddCategory}
+          onClick={() => {}}
           href="/categories/new"
           sx={{
             ":hover": {
