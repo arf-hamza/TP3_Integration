@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
+import ModalConfirmation from "@/components/molecules/modal/modal-confirmation";
 import {
   APICategory,
   getApiCategory,
@@ -11,6 +13,7 @@ import {
 import { Box, Typography, Button, Grid, Pagination } from "@mui/material";
 import MyCardCategory from "@/components/molecules/card-category/my-card";
 
+
 export interface CategoryListProps {
   categories: APICategory[];
 }
@@ -18,12 +21,17 @@ export interface CategoryListProps {
 const CategoryList = (props: CategoryListProps) => {
   const [categories, setCategories] = useState<APICategory[]>(props.categories);
   const [currentPage, setCurrentPage] = useState(1);
+  const [showModal, setShowModal] = useState(false)
+  const [deleteCategoryId, setDeleteCategoryId] = useState('')
+  const t = useTranslations();
+
   const categoriesPerPage = 8;
 
   useEffect(() => {
     fetchCategories();
   }, []);
 
+  
   const fetchCategories = async () => {
     try {
       const response = await getApiCategory();
@@ -33,12 +41,21 @@ const CategoryList = (props: CategoryListProps) => {
     }
   };
 
-  const handleDeleteCategory = async (categoryId: string) => {
+  const hideDeleteModal = () => setShowModal(false)
+  
+  const showDeleteModal = (categoryId: string) => {
+    setDeleteCategoryId(categoryId)
+    setShowModal(true)
+  }
+
+  const handleDeleteCategory = async () => {
     try {
-      await deleteApiCategory(categoryId);
+      await deleteApiCategory(deleteCategoryId);
       fetchCategories();
     } catch (error) {
       console.error("Erreur lors de la suppression de la catégorie :", error);
+    } finally {
+      hideDeleteModal();
     }
   };
 
@@ -113,7 +130,7 @@ const CategoryList = (props: CategoryListProps) => {
               key={category._id}
               category={category}
               handleUpdateCategory={handleUpdateCategory}
-              handleDeleteCategory={handleDeleteCategory}
+              handleDeleteCategory={showDeleteModal}
             />
           ))}
         </Grid>
@@ -133,6 +150,13 @@ const CategoryList = (props: CategoryListProps) => {
           />
         </Box>
       </Box>
+      <ModalConfirmation
+          isOpen={showModal}
+          onClose={hideDeleteModal}
+          onConfirm={handleDeleteCategory}
+          description={ t('category.modal.description') }
+          btnConfirmText={ t('category.modal.btnConfirm') }         
+      />
     </Box>
   );
 };
