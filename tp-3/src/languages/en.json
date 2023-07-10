@@ -51,6 +51,11 @@
       "required": "This field is required",
       "positive": "Please enter a positive number"
     }
-  }
+  },
+  "menu": {
+    "home": "Home",
+    "product": "Product",
+    "category": "Category"
+ }
 }
   

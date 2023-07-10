@@ -6,11 +6,13 @@ import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import Container from "@mui/material/Container";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 export default function MyMenu() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const pathname = usePathname();
+  const t = useTranslations();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -49,7 +51,7 @@ export default function MyMenu() {
               },
             }}
           >
-            Accueil
+            {t("menu.home")}
           </Box>
           <Box
             component="a"
@@ -64,7 +66,7 @@ export default function MyMenu() {
               },
             }}
           >
-            Produits
+            {t("menu.product")}
           </Box>
           <Box
             component="a"
@@ -79,7 +81,7 @@ export default function MyMenu() {
               },
             }}
           >
-            Catégories
+            {t("menu.category")}
           </Box>
           <IconButton
             color="inherit"
@@ -146,7 +148,7 @@ export default function MyMenu() {
                 },
               }}
             >
-            Accueil
+            {t("menu.home")}
             </Box>
             <Box
               component="a"
@@ -161,7 +163,7 @@ export default function MyMenu() {
                 },
               }}
             >
-            Produits
+            {t("menu.product")}
             </Box>
             <Box
               component="a"
@@ -176,7 +178,7 @@ export default function MyMenu() {
                 },
               }}
             >
-            Catégories
+            {t("menu.category")}
             </Box>
           </Box>
         )}

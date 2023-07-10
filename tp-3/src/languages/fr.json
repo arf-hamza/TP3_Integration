@@ -51,5 +51,10 @@
       "required": "Ce champ est requis",
       "positive": "Veuillez saisir un nombre positif"
     }
-  }
+  },
+  "menu": {
+    "home": "Accueil",
+    "product": "Produit",
+    "category": "Categorie"
+ }
 }

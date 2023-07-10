@@ -1,7 +1,7 @@
 import "@/app/globals.css";
 import Style from "@/app/page.module.css"
 import { Inter } from "next/font/google";
-import MyMenu from "@/components/molecules/my-menu/my-menu";
+import MyMenu from "@/components/molecules/my-menu/[locale]/my-menu";
 import ApplicationProvider from "@/context/application.provider";
 import { NextIntlClientProvider } from "next-intl";
 
