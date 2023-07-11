@@ -8,13 +8,15 @@ import { useTranslations } from "next-intl";
 
 const inputStyle = {
   // textField styles
-  '& .MuiInputBase-root': {color: '#FFFFFF'},                             // text
-  '& .MuiFormLabel-root': {color: '#999999'},                             // label
-  '& .MuiFormLabel-root.Mui-focused': {color: '#FFFFFF'},                 // label (focused)
-  '& .MuiOutlinedInput-root': {'& fieldset': {borderColor: '#999999', },  // outline
-  '&:hover fieldset': {borderColor: '#CCCCCC',},                          // outline (hover)
-  '&.Mui-focused fieldset': {borderColor: '#FFFFFF'}},                    // outline (focused)
-  }
+  "& .MuiInputBase-root": { color: "#FFFFFF" }, // text
+  "& .MuiFormLabel-root": { color: "#999999" }, // label
+  "& .MuiFormLabel-root.Mui-focused": { color: "#FFFFFF" }, // label (focused)
+  "& .MuiOutlinedInput-root": {
+    "& fieldset": { borderColor: "#999999" }, // outline
+    "&:hover fieldset": { borderColor: "#CCCCCC" }, // outline (hover)
+    "&.Mui-focused fieldset": { borderColor: "#FFFFFF" },
+  }, // outline (focused)
+};
 
 export interface ProductFormProps {
   id?: string;
@@ -30,17 +32,34 @@ const ProductForm = (props: ProductFormProps) => {
   const t = useTranslations();
 
   const schema = yup.object().shape({
-    title: yup.string().required(t("validation.errors.title.required")).max(50, t("validation.errors.title.maxChar")),
-    description: yup.string().required(t("validation.errors.description.required")).max(255, t("validation.errors.description.maxChar")),
-    price: yup.number().required(t("validation.errors.price.required")).min(1, t("validation.errors.price.negativeValue")),
-    categoryId: yup.string().required(t("validation.errors.categoryId.required")).max(100, t("validation.errors.categoryId.maxChar")),
+    title: yup
+      .string()
+      .required(t("validation.errors.title.required"))
+      .max(50, t("validation.errors.title.maxChar")),
+    description: yup
+      .string()
+      .required(t("validation.errors.description.required"))
+      .max(255, t("validation.errors.description.maxChar")),
+    price: yup
+      .number()
+      .required(t("validation.errors.price.required"))
+      .min(1, t("validation.errors.price.negativeValue")),
+    categoryId: yup
+      .string()
+      .required(t("validation.errors.categoryId.required"))
+      .max(100, t("validation.errors.categoryId.maxChar")),
   });
 
-    const { control, handleSubmit, formState: { errors } } = useForm({
-      resolver: yupResolver(schema),
-    });
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
   const [successMessage, setSuccessMessage] = useState("");
+  const [isSold, setIsSold] = useState(props.isSold || false);
 
   const handleUpdateProduct = (data: any) => {
     const updatedProduct: APIProduct = {
@@ -67,7 +86,7 @@ const ProductForm = (props: ProductFormProps) => {
               <TextField
                 {...field}
                 id="title"
-                label={t('product.form.name')}
+                label={t("product.form.name")}
                 variant="outlined"
                 style={{
                   width: "80%",
@@ -76,12 +95,12 @@ const ProductForm = (props: ProductFormProps) => {
                   fontSize: "16px",
                 }}
                 sx={inputStyle}
-                  InputProps={{
-                    style: {
-                      backgroundColor: "black",
-                      color: "white"
-                    },
-                  }}
+                InputProps={{
+                  style: {
+                    backgroundColor: "black",
+                    color: "white",
+                  },
+                }}
                 error={Boolean(errors.title)}
                 helperText={errors.title?.message}
               />
@@ -98,7 +117,7 @@ const ProductForm = (props: ProductFormProps) => {
               <TextField
                 {...field}
                 id="description"
-                label={t('product.form.description')}
+                label={t("product.form.description")}
                 variant="outlined"
                 style={{
                   width: "80%",
@@ -110,7 +129,7 @@ const ProductForm = (props: ProductFormProps) => {
                 InputProps={{
                   style: {
                     backgroundColor: "black",
-                    color: "white"
+                    color: "white",
                   },
                 }}
                 error={Boolean(errors.description)}
@@ -129,7 +148,7 @@ const ProductForm = (props: ProductFormProps) => {
               <TextField
                 {...field}
                 id="price"
-                label={t('product.form.price')}
+                label={t("product.form.price")}
                 variant="outlined"
                 type="number"
                 style={{
@@ -142,7 +161,7 @@ const ProductForm = (props: ProductFormProps) => {
                 InputProps={{
                   style: {
                     backgroundColor: "black",
-                    color: "white"
+                    color: "white",
                   },
                 }}
                 error={Boolean(errors.price)}
@@ -168,8 +187,8 @@ const ProductForm = (props: ProductFormProps) => {
             }}
             sx={inputStyle}
           >
-            <MenuItem value="false">{t('product.form.notSold')}</MenuItem>
-            <MenuItem value="true">{t('product.form.sold')}</MenuItem>
+            <MenuItem value="false">{t("product.form.notSold")}</MenuItem>
+            <MenuItem value="true">{t("product.form.sold")}</MenuItem>
           </Select>
         </Grid>
         <Grid item xs={12} sx={{ marginBottom: "20px" }}>
@@ -181,7 +200,7 @@ const ProductForm = (props: ProductFormProps) => {
               <TextField
                 {...field}
                 id="categoryId"
-                label={t('product.form.categoryId')}
+                label={t("product.form.categoryId")}
                 variant="outlined"
                 style={{
                   width: "80%",
@@ -193,7 +212,7 @@ const ProductForm = (props: ProductFormProps) => {
                 InputProps={{
                   style: {
                     backgroundColor: "black",
-                    color: "white"
+                    color: "white",
                   },
                 }}
                 error={Boolean(errors.categoryId)}
@@ -203,7 +222,7 @@ const ProductForm = (props: ProductFormProps) => {
           />
         </Grid>
         <Box sx={{ marginTop: "50px", marginBottom: "10px" }}>
-        <Button
+          <Button
             variant="contained"
             color="error"
             href="/products"
@@ -216,7 +235,7 @@ const ProductForm = (props: ProductFormProps) => {
           >
             {t("product.cancelButton")}
           </Button>
-	        <Button
+          <Button
             variant="contained"
             color="inherit"
             type="submit"
