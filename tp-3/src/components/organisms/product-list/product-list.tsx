@@ -99,7 +99,7 @@ const ProductList = (props: ProductListProps) => {
         }}
       >
         <Typography color="white" variant="h4">
-          Liste des Produits
+        {t('product.listTitle')}
         </Typography>
         <Box
           sx={{
@@ -122,7 +122,7 @@ const ProductList = (props: ProductListProps) => {
             width: "50%",
           }}
         >
-          Ajouter un produit
+          {t('product.addButton')}
         </Button>
       </Box>
       <Box mt={2} sx={{ backgroundColor: "black"  }}>

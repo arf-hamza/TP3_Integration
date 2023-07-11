@@ -14,6 +14,8 @@ import { Box, Typography, Button, Grid, Pagination } from "@mui/material";
 import MyCardCategory from "@/components/molecules/card-category/my-card";
 
 
+
+
 export interface CategoryListProps {
   categories: APICategory[];
 }
@@ -96,7 +98,7 @@ const CategoryList = (props: CategoryListProps) => {
         }}
       >
         <Typography color="white" variant="h4">
-          Liste des catégories
+          {t('category.listTitle')}
         </Typography>
 
         <Box
@@ -120,7 +122,7 @@ const CategoryList = (props: CategoryListProps) => {
             width: "50%",
           }}
         >
-          Ajouter une categorie
+          {t('category.addButton')}
         </Button>
       </Box>
       <Box mt={2} sx={{ backgroundColor: "black" }}>

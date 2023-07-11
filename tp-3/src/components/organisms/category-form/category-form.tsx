@@ -10,6 +10,16 @@ const schema = yup.object().shape({
   name: yup.string().required("Name is required").max(55, "Maximum characters allowed: 55"),
 });
 
+const inputStyle = {
+  // textField styles
+  '& .MuiInputBase-root': {color: '#FFFFFF'},                             // text
+  '& .MuiFormLabel-root': {color: '#999999'},                             // label
+  '& .MuiFormLabel-root.Mui-focused': {color: '#FFFFFF'},                 // label (focused)
+  '& .MuiOutlinedInput-root': {'& fieldset': {borderColor: '#999999', },  // outline
+  '&:hover fieldset': {borderColor: '#CCCCCC',},                          // outline (hover)
+  '&.Mui-focused fieldset': {borderColor: '#FFFFFF'}},                    // outline (focused)
+  }
+
 export interface CategoryFormProps {
   id?: string;
   name?: string;
@@ -45,19 +55,19 @@ const CategoryForm = (props: CategoryFormProps) => {
               <TextField
                 {...field}
                 id="name"
-                label=""
+                label={t('category.form.name')}
                 variant="outlined"
                 style={{
                   width: "80%",
                   height: "40px",
-                  padding: "5px",
+                  margin: "5px",
                   fontSize: "16px",
                 }}
+                sx={inputStyle}
                 InputProps={{
                   style: {
                     backgroundColor: "black",
                     color: "white",
-                    border: "1px solid gray",
                   },
                 }}
                 error={Boolean(errors.name)}
@@ -68,10 +78,10 @@ const CategoryForm = (props: CategoryFormProps) => {
         </Grid>
 
         <Box sx={{ marginTop: "70px" }}>
-          <Button
+        <Button
             variant="contained"
-            color="inherit"
-            type="submit"
+            color="error"
+            href="/categories"
             style={{
               backgroundColor: "gray",
               color: "white",
@@ -79,20 +89,20 @@ const CategoryForm = (props: CategoryFormProps) => {
               width: "200px",
             }}
           >
-            {t("category.saveButton")}
+            {t("category.cancelButton")}
           </Button>
           <Button
             variant="contained"
-            color="error"
-            href="/categories"
+            color="inherit"
+            type="submit"
             style={{
               backgroundColor: "white",
-              color: "gray",
+              color: "black",
               borderRadius: "0",
               width: "200px",
             }}
           >
-            {t("category.cancelButton")}
+            {t("category.saveButton")}
           </Button>
         </Box>
       </Box>

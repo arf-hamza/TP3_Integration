@@ -41,8 +41,6 @@
       "description": "Description",
       "price": "Price",
       "isSold": "Sold?",
-      "sold": "Sold",
-      "notSold": "Not sold",
       "categoryId": "Category ID"
     }
   },
@@ -58,9 +56,6 @@
       "description": "Are you sure you want to delete this category?",
       "btnConfirm": "Delete",
       "btnCancel": "Cancel"
-    },
-    "form": {
-      "name": "Name"
     }
   },
   "validation": {

@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useTransition } from "react";
 import {
   Card,
   CardContent,
@@ -9,6 +9,7 @@ import {
   Grid,
 } from "@mui/material";
 import { APICategory } from "@/api/category.api";
+import { useTranslations } from "next-intl";
 
 interface MyCardCategoryProps {
   category: APICategory;
@@ -21,6 +22,7 @@ export default function MyCardCategory({
   handleUpdateCategory,
   handleDeleteCategory,
 }: MyCardCategoryProps) {
+  const t = useTranslations();
   return (
     <Grid item xs={12} sm={6} md={4} lg={3}>
       <Card variant="outlined" sx={{ backgroundColor: "darkgrey" }}>
@@ -33,15 +35,15 @@ export default function MyCardCategory({
             <Button
               variant="contained"
               color="inherit"
-              href={`/categories/${category._id}`}            >
-              Modifier
+              href={`/categories/${category._id}`}>
+              {t('common.button.edit')}
             </Button>
             <Button
               variant="contained"
               color="error"
               onClick={() => handleDeleteCategory(category._id)}
             >
-              Supprimer
+              {t('common.button.delete')}
             </Button>
           </Box>
         </CardContent>

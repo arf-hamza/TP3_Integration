@@ -1,6 +1,7 @@
 "use client"
 import React from "react";
 import { Typography, Button, Card, CardContent, Box, Grid } from "@mui/material";
+import { useTranslations } from "next-intl";
 
 interface Product {
   _id: string;
@@ -19,7 +20,7 @@ interface MyCardProductProps {
 
 const MyCardProduct = (props: MyCardProductProps) => {
   const { product, handleUpdateProduct, handleDeleteProduct } = props;
-
+  const t = useTranslations();
   return (
     <Grid item key={product._id} xs={12} sm={6} md={4} lg={3}>
       <Card sx={{ margin: "16px", backgroundColor: "darkgray" }}>
@@ -35,14 +36,14 @@ const MyCardProduct = (props: MyCardProductProps) => {
               color="inherit"
               href={`/products/${product._id}`}
             >
-              Modifier
+              {t('common.button.edit')}
             </Button>
             <Button
               variant="contained"
               color="error"
               onClick={() => handleDeleteProduct(product._id)}
             >
-              Supprimer
+              {t('common.button.delete')}
             </Button>
           </Box>
         </CardContent>
