@@ -12,9 +12,13 @@ import {
 import { APICategory } from "../../../api/category.api";
 import { useRouter } from "next/router";
 
+import { useTranslation } from 'react-i18next';
+import "../../../../i18n"
+
 
 
 const CategoryPage = ({params}) => {
+    const { t } = useTranslation();
     const id = params._id;
     const [categories, setCategories] = useState<APICategory[]>([]);
     const router = useRouter();

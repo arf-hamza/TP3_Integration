@@ -8,9 +8,12 @@ import Container from "@mui/material/Container";
 import { usePathname } from "next/navigation";
 
 import { useTranslation } from 'react-i18next';
+import i18n from "../../../../i18n"
 
 export default function MyMenu() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const { t } = useTranslation();
 
   const pathname = usePathname();
 
@@ -22,8 +25,6 @@ export default function MyMenu() {
   
   const changeLanguage = (language: string) => {
   };
-
-  const { t, i18n} = useTranslation(['header']);
   
   const isActivePage = (page: string) => {
     return pathname === page;
@@ -90,7 +91,7 @@ export default function MyMenu() {
                <Button
                  color="primary"
                  variant="text"
-                 onClick={() => changeLanguage("fr")}
+                 onClick={() => i18n.changeLanguage("fr")}
                  sx={{ color: "white",  
                  "&:hover": {
                   color: "lightgray",
@@ -103,7 +104,7 @@ export default function MyMenu() {
                <Button
                  color="primary"
                  variant="text"
-                 onClick={() => changeLanguage("en")}
+                 onClick={() => i18n.changeLanguage("en")}
                  sx={{ color: "white",  
                  "&:hover": {
                   color: "lightgray",

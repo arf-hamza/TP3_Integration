@@ -3,6 +3,9 @@ import React from "react";
 import { Card, CardContent, Typography, Button, Box, Grid } from "@mui/material";
 import { APICategory } from "../../../api/category.api";
 
+import { useTranslation } from 'react-i18next';
+import "../../../../i18n"
+
 interface MyCardCategoryProps {
   category: APICategory;
   handleUpdateCategory: (category: APICategory) => void;
@@ -14,6 +17,7 @@ export default function MyCardCategory({
   handleUpdateCategory,
   handleDeleteCategory,
 }: MyCardCategoryProps) {
+  const { t } = useTranslation();
   return (
     <Grid item xs={12} sm={6} md={4} lg={3}>
       <Card variant="outlined" sx={{ backgroundColor: "darkgrey" }}>
@@ -28,14 +32,14 @@ export default function MyCardCategory({
               color="inherit"
               onClick={() => (window.location.href = "/editCategory")}
             >
-              Modifier
+              {t('categories.edit')}
             </Button>
             <Button
               variant="contained"
               color="error"
               onClick={() => handleDeleteCategory(category._id)}
             >
-              Supprimer
+              {t('categories.delete')}
             </Button>
           </Box>
         </CardContent>

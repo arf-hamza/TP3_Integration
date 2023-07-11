@@ -2,6 +2,9 @@
 import React from "react";
 import { Typography, Button, Card, CardContent, Box, Grid } from "@mui/material";
 
+import { useTranslation } from 'react-i18next';
+import "../../../../i18n"
+
 interface Product {
   id: string;
   title: string;
@@ -20,6 +23,7 @@ export default function MyCardProduct({
   handleUpdateProduct,
   handleDeleteProduct,
 }: MyCardProductProps) {
+  const { t } = useTranslation();
   return (
     <Grid item key={product.id} xs={6}>
       <Card sx={{ margin: "16px", backgroundColor: "darkgray" }}>
@@ -33,14 +37,14 @@ export default function MyCardProduct({
               color="inherit"
               onClick={() => handleUpdateProduct(product.id)}
             >
-              Modifier
+              {t('products.edit')}
             </Button>
             <Button
               variant="contained"
               color="error"
               onClick={() => handleDeleteProduct(product.id)}
             >
-              Supprimer
+              {t('products.delete')}
             </Button>
           </Box>
         </CardContent>

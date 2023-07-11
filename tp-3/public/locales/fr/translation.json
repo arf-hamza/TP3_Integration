@@ -11,6 +11,7 @@
     "home.title": "TP3 - Intégration Web",
     "home.description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero atque illum minima, soluta totam, placeat architecto dolore voluptatibus commodi velit, est incidunt itaque quisquam maxime dolorum voluptates. Numquam, possimus corrupti.Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero atque illum minima, soluta totam, placeat architecto dolore voluptatibus commodi velit, est incidunt itaque quisquam maxime dolorum voluptates. Numquam, possimus corrupti.",
 
+    "categories.list": "Liste des catégories",
     "categories.add": "AJOUTER UNE CATÉGORIE",
     "categories.edit": "MODIFIER",
     "categories.delete": "SUPPRIMER",

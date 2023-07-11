@@ -18,6 +18,9 @@ import {
 import MyMenu from "@/components/molecules/my-menu/my-menu";
 import MyCardProduct from "../../components/molecules/card-product/my-card";
 
+import { useTranslation } from 'react-i18next';
+import "../../../i18n"
+
 interface Product {
   id: string;
   title: string;
@@ -27,7 +30,10 @@ interface Product {
   userId: string;
 }
 
+
 const ProductPage = () => {
+
+  const { t } = useTranslation();
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
@@ -120,7 +126,7 @@ const ProductPage = () => {
             width: "50%"
           }}
         >
-          Ajouter un produit
+          {t('products.add')}
         </Button>
         </Box>
         <Grid container spacing={6}>
