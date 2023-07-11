@@ -1,0 +1,96 @@
+{
+  "common": {
+    "button": {
+      "save": "Sauvegarder",
+      "delete": "Supprimer",
+      "edit": "Modifier"
+    }
+  },
+  "home": {
+    "title": "TP 3 - Intégration Web"
+  },
+  "developerCard": {
+    "designer": "Designer",
+    "developerFemale": "Développeuse",
+    "developer": "Développeur"
+  },
+  "workDescription": {
+    "title": "Description",
+    "description": "React est une bibliothèque JavaScript pour créer des interfaces utilisateur interactives. TypeScript est une extension de JavaScript qui ajoute un typage statique au code. En combinant React avec TypeScript, nous bénéficions d'avantages tels qu'une détection d'erreurs plus rapide et une meilleure collaboration sur les grands projets. Next.js est un framework qui simplifie le développement d'applications React en offrant des fonctionnalités telles que le rendu côté serveur, la pré-rendu statique et le routage simplifié. Ensemble, React, TypeScript et Next.js fournissent une base solide pour la construction d'applications web modernes et évolutives. Nous réalisons notre travail avec cette nouvelle stack technologique."
+  },
+  "modalConfirmation": {
+    "description": "Confirmer ?",
+    "btnConfirm": "Oui",
+    "btnCancel": "Annuler"
+  },
+  "product": {
+    "modifyTitle": "Modifier le Produit",
+    "listTitle": "Liste des Produits",
+    "addButton": "Ajouter un Produit",
+    "saveButton": "Sauvegarder",
+    "cancelButton": "Annuler",
+    "modifyMessage": "Le produit a été enregistré avec succès",
+    "newmodifyTitle": "Nouveau Produit",
+    "modal": {
+      "description": "Êtes-vous sûr de vouloir supprimer ce produit?",
+      "btnConfirm": "Supprimer",
+      "btnCancel": "Annuler"
+    },
+    "form": {
+      "name": "Nom",
+      "description": "Description",
+      "price": "Prix",
+      "isSold": "Vendu?",
+      "sold": "Vendu",
+      "notSold": "Non vendu",
+      "categoryId": "ID de catégorie"
+    }
+  },
+  "category": {
+    "listTitle": "Liste des Catégories",
+    "modifyTitle": "Modifier la Catégorie",
+    "addButton": "Ajouter une Catégorie",
+    "saveButton": "Sauvegarder",
+    "cancelButton": "Annuler",
+    "modifyMessage": "La catégorie a été enregistrée avec succès",
+    "newmodifyTitle": "Nouvelle Catégorie",
+    "modal": {
+      "description": "Êtes-vous sûr de vouloir supprimer cette catégorie?",
+      "btnConfirm": "Supprimer",
+      "btnCancel": "Annuler"
+    },
+    "form": {
+      "name": "Nom"
+    }
+  },
+  "validation": {
+    "errors": {
+      "required": "Ce champ est requis",
+      "positive": "Veuillez saisir un nombre positif",
+      "name": {
+        "required": "Nom est obligatoire",
+        "maxChar": "Maximum characteres permis: 55"
+      },
+      "title": {
+        "required": "Titre est obligatoire",
+        "maxChar": "Maximum characteres permis: 55"
+      },
+      "description": {
+        "required": "Description est obligatoire",
+        "maxChar": "Maximum characteres permis: 255"
+      },
+      "price": {
+        "required": "Prix est obligatoire",
+        "negativeValue": "Veuillez saisir un nombre positif"
+      },
+      "categoryId": {
+        "required": "ID de catégorie est obligatoire"
+      }
+    }
+  },
+  "menu": {
+    "home": "Accueil",
+    "product": "Produits",
+    "category": "Catégories"
+ }
+}
