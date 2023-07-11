@@ -1,27 +1,10 @@
 import React, { useState } from "react";
 import { Box, Button, Grid, Select, MenuItem, TextField } from "@mui/material";
 import { APIProduct } from "@/api/product.api";
-import { useTranslations } from "next-intl";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-
-const schema = yup.object().shape({
-  title: yup.string().required("Title is required").max(50, "Maximum characters: 50"),
-  description: yup.string().required("Description is required").max(255, "Maximum characters: 255"),
-  price: yup.number().required("Price is required").positive("Price must be a positive number"),
-  categoryId: yup.string().required("Category is required")
-});
-
-export interface ProductFormProps {
-  id?: string;
-  title?: string;
-  description?: string;
-  price?: number;
-  categoryId?: string;
-  isSold?: boolean;
-  onProductAction: (product: APIProduct) => void;
-}
+import { useTranslations } from "next-intl";
 
 const inputStyle = {
   // textField styles
@@ -33,13 +16,31 @@ const inputStyle = {
   '&.Mui-focused fieldset': {borderColor: '#FFFFFF'}},                    // outline (focused)
   }
 
+export interface ProductFormProps {
+  id?: string;
+  title?: string;
+  description?: string;
+  price?: number;
+  categoryId?: string;
+  isSold?: boolean;
+  onProductAction: (product: APIProduct) => void;
+}
+
 const ProductForm = (props: ProductFormProps) => {
-  const { control, handleSubmit, formState: { errors } } = useForm({
-    resolver: yupResolver(schema),
+  const t = useTranslations();
+
+  const schema = yup.object().shape({
+    title: yup.string().required(t("validation.errors.title.required")).max(50, t("validation.errors.title.maxChar")),
+    description: yup.string().required(t("validation.errors.description.required")).max(255, t("validation.errors.description.maxChar")),
+    price: yup.number().required(t("validation.errors.price.required")).min(1, t("validation.errors.price.negativeValue")),
+    categoryId: yup.string().required(t("validation.errors.categoryId.required")).max(100, t("validation.errors.categoryId.maxChar")),
   });
 
+    const { control, handleSubmit, formState: { errors } } = useForm({
+      resolver: yupResolver(schema),
+    });
+
   const [successMessage, setSuccessMessage] = useState("");
-  const t = useTranslations();
 
   const handleUpdateProduct = (data: any) => {
     const updatedProduct: APIProduct = {

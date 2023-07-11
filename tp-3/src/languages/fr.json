@@ -70,6 +70,21 @@
       "name": {
         "required": "Nom est obligatoire",
         "maxChar": "Maximum characteres permis: 55"
+      },
+      "title": {
+        "required": "Titre est obligatoire",
+        "maxChar": "Maximum characteres permis: 55"
+      },
+      "description": {
+        "required": "Description est obligatoire",
+        "maxChar": "Maximum characteres permis: 255"
+      },
+      "price": {
+        "required": "Prix est obligatoire",
+        "negativeValue": "Veuillez saisir un nombre positif"
+      },
+      "categoryId": {
+        "required": "ID de catégorie est obligatoire"
       }
     }
   },
