@@ -6,10 +6,6 @@ import * as yup from "yup";
 import { APICategory } from "@/api/category.api";
 import { useTranslations } from "next-intl";
 
-const schema = yup.object().shape({
-  name: yup.string().required("Name is required").max(55, "Maximum characters allowed: 55"),
-});
-
 const inputStyle = {
   // textField styles
   '& .MuiInputBase-root': {color: '#FFFFFF'},                             // text
@@ -27,12 +23,17 @@ export interface CategoryFormProps {
 }
 
 const CategoryForm = (props: CategoryFormProps) => {
+  const t = useTranslations();
+
+  const schema = yup.object().shape({
+    name: yup.string().required(t("validation.errors.name.required")).max(55, t("validation.errors.name.maxChar")),
+  });
+
   const { control, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
   });
 
   const [successMessage, setSuccessMessage] = useState("");
-  const t = useTranslations();
 
   const handleUpdateCategory = (data: any) => {
     const updatedCategory: APICategory = {
