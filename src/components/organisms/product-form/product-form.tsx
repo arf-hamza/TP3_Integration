@@ -41,6 +41,7 @@ const ProductForm = (props: ProductFormProps) => {
     });
 
   const [successMessage, setSuccessMessage] = useState("");
+  const [isSold, setIsSold] = useState(props.isSold || false);
 
   const handleUpdateProduct = (data: any) => {
     const updatedProduct: APIProduct = {
