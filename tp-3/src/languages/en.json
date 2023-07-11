@@ -85,6 +85,7 @@
       },
       "categoryId": {
         "required": "Category ID is required"
+
       }
     }
   },
