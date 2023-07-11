@@ -2,11 +2,12 @@
   "common": {
     "button": {
       "save": "Sauvegarder",
-      "delete": "Supprimer"
+      "delete": "Supprimer",
+      "edit": "Modifier"
     }
   },
   "home": {
-    "title": "TP 3 - Intégration"
+    "title": "TP 3 - Intégration Web"
   },
   "developerCard": {
     "designer": "Designer",
@@ -24,26 +25,42 @@
   },
   "product": {
     "modifyTitle": "Modifier le Produit",
+    "listTitle": "Liste des Produits",
+    "addButton": "Ajouter un Produit",
     "saveButton": "Sauvegarder",
     "cancelButton": "Annuler",
     "modifyMessage": "Le produit a été enregistré avec succès",
     "newmodifyTitle": "Nouveau Produit",
     "modal": {
-      "description": "Êtes-vous sûr que vous voulez supprimer ce produit?",
+      "description": "Êtes-vous sûr de vouloir supprimer ce produit?",
       "btnConfirm": "Supprimer",
       "btnCancel": "Annuler"
+    },
+    "form": {
+      "name": "Nom",
+      "description": "Description",
+      "price": "Prix",
+      "isSold": "Vendu?",
+      "sold": "Vendu",
+      "notSold": "Non vendu",
+      "categoryId": "ID de catégorie"
     }
   },
   "category": {
+    "listTitle": "Liste des Catégories",
     "modifyTitle": "Modifier la Catégorie",
+    "addButton": "Ajouter une Catégorie",
     "saveButton": "Sauvegarder",
     "cancelButton": "Annuler",
     "modifyMessage": "La catégorie a été enregistrée avec succès",
     "newmodifyTitle": "Nouvelle Catégorie",
     "modal": {
-      "description": "Êtes-vous sûr que vous voulez supprimer cette catégorie?",
+      "description": "Êtes-vous sûr de vouloir supprimer cette catégorie?",
       "btnConfirm": "Supprimer",
       "btnCancel": "Annuler"
+    },
+    "form": {
+      "name": "Nom"
     }
   },
   "validation": {
@@ -54,7 +71,7 @@
   },
   "menu": {
     "home": "Accueil",
-    "product": "Produit",
-    "category": "Categorie"
+    "product": "Produits",
+    "category": "Catégories"
  }
 }

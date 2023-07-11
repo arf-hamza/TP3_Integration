@@ -13,6 +13,16 @@ export interface ProductFormProps {
   onProductAction: (product: APIProduct) => void;
 }
 
+const inputStyle = {
+  // textField styles
+  '& .MuiInputBase-root': {color: '#FFFFFF'},                             // text
+  '& .MuiFormLabel-root': {color: '#999999'},                             // label
+  '& .MuiFormLabel-root.Mui-focused': {color: '#FFFFFF'},                 // label (focused)
+  '& .MuiOutlinedInput-root': {'& fieldset': {borderColor: '#999999', },  // outline
+  '&:hover fieldset': {borderColor: '#CCCCCC',},                          // outline (hover)
+  '&.Mui-focused fieldset': {borderColor: '#FFFFFF'}},                    // outline (focused)
+  }
+
 const ProductForm = (props: ProductFormProps) => {
   const [title, setTitle] = useState(props.title || "");
   const [description, setDescription] = useState(props.description || "");
@@ -43,21 +53,21 @@ const ProductForm = (props: ProductFormProps) => {
         <Grid item xs={12} sx={{ marginBottom: "20px" }}>
           <TextField
             id="title"
-            label=""
+            label={t('product.form.name')}
             variant="outlined"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             style={{
               width: "80%",
               height: "40px",
-              padding: "5px",
+              margin: "5px",
               fontSize: "16px",
             }}
+            sx={inputStyle}
             InputProps={{
               style: {
                 backgroundColor: "black",
-                color: "white",
-                border: "1px solid gray",
+                color: "white"
               },
             }}
           />
@@ -66,21 +76,21 @@ const ProductForm = (props: ProductFormProps) => {
         <Grid item xs={12} sx={{ marginBottom: "20px" }}>
           <TextField
             id="description"
-            label=""
+            label={t('product.form.description')}
             variant="outlined"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             style={{
               width: "80%",
               height: "40px",
-              padding: "5px",
+              margin: "5px",
               fontSize: "16px",
             }}
+            sx={inputStyle}
             InputProps={{
               style: {
                 backgroundColor: "black",
-                color: "white",
-                border: "1px solid gray",
+                color: "white"
               },
             }}
           />
@@ -89,7 +99,7 @@ const ProductForm = (props: ProductFormProps) => {
         <Grid item xs={12} sx={{ marginBottom: "20px" }}>
           <TextField
             id="price"
-            label=""
+            label={t('product.form.price')}
             variant="outlined"
             type="number"
             value={price}
@@ -97,14 +107,14 @@ const ProductForm = (props: ProductFormProps) => {
             style={{
               width: "80%",
               height: "40px",
-              padding: "5px",
+              margin: "5px",
               fontSize: "16px",
             }}
+            sx={inputStyle}
             InputProps={{
               style: {
                 backgroundColor: "black",
-                color: "white",
-                border: "1px solid gray",
+                color: "white"
               },
             }}
           />
@@ -114,39 +124,41 @@ const ProductForm = (props: ProductFormProps) => {
           <Select
             id="isSold"
             value={isSold}
+            label="" /* {t('product.form.isSold')} */
             onChange={(e) => setIsSold(e.target.value === "true")}
             style={{
               width: "80%",
               height: "40px",
-              padding: "5px",
+              margin: "5px",
               fontSize: "16px",
               backgroundColor: "black",
               color: "white",
               border: "1px solid gray",
             }}
+            sx={inputStyle}
           >
-            <MenuItem value="false">Non</MenuItem>
-            <MenuItem value="true">Oui</MenuItem>
+            <MenuItem value="false">{t('product.form.notSold')}</MenuItem>
+            <MenuItem value="true">{t('product.form.sold')}</MenuItem>
           </Select>
         </Grid>
         <Grid item xs={12} sx={{ marginBottom: "20px" }}>
           <TextField
             id="categoryId"
-            label=""
+            label={t('product.form.categoryId')}
             variant="outlined"
             value={categoryId}
             onChange={(e) => setCategorie(e.target.value)}
             style={{
               width: "80%",
               height: "40px",
-              padding: "5px",
+              margin: "5px",
               fontSize: "16px",
             }}
+            sx={inputStyle}
             InputProps={{
               style: {
                 backgroundColor: "black",
-                color: "white",
-                border: "1px solid gray",
+                color: "white"
               },
             }}
           />
@@ -154,8 +166,8 @@ const ProductForm = (props: ProductFormProps) => {
         <Box sx={{ marginTop: "70px" }}>
           <Button
             variant="contained"
-            color="inherit"
-            onClick={handleUpdateProduct}
+            color="error"
+            href="/products"
             style={{
               backgroundColor: "gray",
               color: "white",
@@ -163,20 +175,20 @@ const ProductForm = (props: ProductFormProps) => {
               width: "200px",
             }}
           >
-            {t("product.saveButton")}
+            {t("product.cancelButton")}
           </Button>
           <Button
             variant="contained"
-            color="error"
-            href="/products"
+            color="inherit"
+            onClick={handleUpdateProduct}
             style={{
               backgroundColor: "white",
-              color: "gray",
+              color: "black",
               borderRadius: "0",
               width: "200px",
             }}
           >
-            {t("product.cancelButton")}
+            {t("product.saveButton")}
           </Button>
         </Box>
       </Box>

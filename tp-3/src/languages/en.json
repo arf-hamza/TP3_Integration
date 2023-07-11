@@ -2,11 +2,12 @@
   "common": {
     "button": {
       "save": "Save",
-      "delete": "Delete"
+      "delete": "Delete",
+      "edit": "Edit"
     }
   },
   "home": {
-    "title": "TP 3 - Integration"
+    "title": "TP 3 - Web Integration"
   },
   "developerCard": {
     "designer": "Designer",
@@ -24,6 +25,8 @@
   },
   "product": {
     "modifyTitle": "Edit Product",
+    "listTitle": "List of Products",
+    "addButton": "Add a Product",
     "saveButton": "Save",
     "cancelButton": "Cancel",
     "modifyMessage": "Product saved successfully!",
@@ -32,10 +35,21 @@
       "description": "Are you sure you want to delete this product?",
       "btnConfirm": "Delete",
       "btnCancel" : "Cancel"
+    },
+    "form": {
+      "name": "Name",
+      "description": "Description",
+      "price": "Price",
+      "isSold": "Sold?",
+      "sold": "Sold",
+      "notSold": "Not sold",
+      "categoryId": "Category ID"
     }
   },
   "category": {
-    "modifyTitle": "Modify category",
+    "modifyTitle": "Edit Category",
+    "listTitle": "List of Categories",
+    "addButton": "Add a Category",
     "saveButton": "Save",
     "cancelButton": "Cancel",
     "modifyMessage": "Category saved successfully!",
@@ -44,6 +58,9 @@
       "description": "Are you sure you want to delete this category?",
       "btnConfirm": "Delete",
       "btnCancel": "Cancel"
+    },
+    "form": {
+      "name": "Name"
     }
   },
   "validation": {
@@ -54,8 +71,8 @@
   },
   "menu": {
     "home": "Home",
-    "product": "Product",
-    "category": "Category"
+    "product": "Products",
+    "category": "Categories"
  }
 }
   
