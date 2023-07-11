@@ -2,6 +2,16 @@ import React, { useState } from "react";
 import { Box, Button, Grid, Select, MenuItem, TextField } from "@mui/material";
 import { APIProduct } from "@/api/product.api";
 import { useTranslations } from "next-intl";
+import { useForm, Controller } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+const schema = yup.object().shape({
+  title: yup.string().required("Title is required").max(50, "Maximum characters: 50"),
+  description: yup.string().required("Description is required").max(255, "Maximum characters: 255"),
+  price: yup.number().required("Price is required").positive("Price must be a positive number"),
+  categoryId: yup.string().required("Category is required")
+});
 
 export interface ProductFormProps {
   id?: string;
@@ -24,107 +34,127 @@ const inputStyle = {
   }
 
 const ProductForm = (props: ProductFormProps) => {
-  const [title, setTitle] = useState(props.title || "");
-  const [description, setDescription] = useState(props.description || "");
-  const [price, setPrice] = useState(props.price || 0);
-  const [isSold, setIsSold] = useState(props.isSold || false);
-  //const [categoryId, setCategorie] = useState(props.categoryId || "");
-  const [categoryId, setCategorie] = useState(props.categoryId || "");
+  const { control, handleSubmit, formState: { errors } } = useForm({
+    resolver: yupResolver(schema),
+  });
 
   const [successMessage, setSuccessMessage] = useState("");
   const t = useTranslations();
 
-  const handleUpdateProduct = () => {
+  const handleUpdateProduct = (data: any) => {
     const updatedProduct: APIProduct = {
       _id: props.id || "",
-      title: title,
-      description: description,
-      price: price,
-      categoryId: categoryId || "",
-      isSold: isSold,
+      title: data.title,
+      description: data.description,
+      price: data.price,
+      categoryId: data.categoryId,
+      isSold: props.isSold || false,
     };
     props.onProductAction(updatedProduct);
     setSuccessMessage(t("product.modifyMessage"));
   };
 
   return (
-    <form>
-      <Box sx={{ marginTop: "70px", textAlign: "center" }}>
-        <Grid item xs={12} sx={{ marginBottom: "20px" }}>
-          <TextField
-            id="title"
-            label={t('product.form.name')}
-            variant="outlined"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            style={{
-              width: "80%",
-              height: "40px",
-              margin: "5px",
-              fontSize: "16px",
-            }}
-            sx={inputStyle}
-            InputProps={{
-              style: {
-                backgroundColor: "black",
-                color: "white"
-              },
-            }}
+    <form onSubmit={handleSubmit(handleUpdateProduct)}>
+      <Box sx={{ textAlign: "center" }}>
+        <Grid item xs={12} sx={{ marginBottom: "36px" }}>
+          <Controller
+            control={control}
+            name="title"
+            defaultValue={props.title || ""}
+            render={({ field }) => (
+              <TextField
+                {...field}
+                id="title"
+                label={t('product.form.name')}
+                variant="outlined"
+                style={{
+                  width: "80%",
+                  height: "40px",
+                  margin: "5px",
+                  fontSize: "16px",
+                }}
+                sx={inputStyle}
+                  InputProps={{
+                    style: {
+                      backgroundColor: "black",
+                      color: "white"
+                    },
+                  }}
+                error={Boolean(errors.title)}
+                helperText={errors.title?.message}
+              />
+            )}
           />
         </Grid>
 
-        <Grid item xs={12} sx={{ marginBottom: "20px" }}>
-          <TextField
-            id="description"
-            label={t('product.form.description')}
-            variant="outlined"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            style={{
-              width: "80%",
-              height: "40px",
-              margin: "5px",
-              fontSize: "16px",
-            }}
-            sx={inputStyle}
-            InputProps={{
-              style: {
-                backgroundColor: "black",
-                color: "white"
-              },
-            }}
+        <Grid item xs={12} sx={{ marginBottom: "36px" }}>
+          <Controller
+            control={control}
+            name="description"
+            defaultValue={props.description || ""}
+            render={({ field }) => (
+              <TextField
+                {...field}
+                id="description"
+                label={t('product.form.description')}
+                variant="outlined"
+                style={{
+                  width: "80%",
+                  height: "40px",
+                  margin: "5px",
+                  fontSize: "16px",
+                }}
+                sx={inputStyle}
+                InputProps={{
+                  style: {
+                    backgroundColor: "black",
+                    color: "white"
+                  },
+                }}
+                error={Boolean(errors.description)}
+                helperText={errors.description?.message}
+              />
+            )}
           />
         </Grid>
 
-        <Grid item xs={12} sx={{ marginBottom: "20px" }}>
-          <TextField
-            id="price"
-            label={t('product.form.price')}
-            variant="outlined"
-            type="number"
-            value={price}
-            onChange={(e) => setPrice(parseFloat(e.target.value))}
-            style={{
-              width: "80%",
-              height: "40px",
-              margin: "5px",
-              fontSize: "16px",
-            }}
-            sx={inputStyle}
-            InputProps={{
-              style: {
-                backgroundColor: "black",
-                color: "white"
-              },
-            }}
+        <Grid item xs={12} sx={{ marginBottom: "36px" }}>
+          <Controller
+            control={control}
+            name="price"
+            defaultValue={props.price || 0}
+            render={({ field }) => (
+              <TextField
+                {...field}
+                id="price"
+                label={t('product.form.price')}
+                variant="outlined"
+                type="number"
+                style={{
+                  width: "80%",
+                  height: "40px",
+                  margin: "5px",
+                  fontSize: "16px",
+                }}
+                sx={inputStyle}
+                InputProps={{
+                  style: {
+                    backgroundColor: "black",
+                    color: "white"
+                  },
+                }}
+                error={Boolean(errors.price)}
+                helperText={errors.price?.message}
+              />
+            )}
           />
         </Grid>
 
         <Grid item xs={12} sx={{ marginBottom: "20px" }}>
           <Select
             id="isSold"
-            value={isSold}
-            label="" /* {t('product.form.isSold')} */
+            value={props.isSold || false}
             onChange={(e) => setIsSold(e.target.value === "true")}
             style={{
               width: "80%",
@@ -142,29 +172,37 @@ const ProductForm = (props: ProductFormProps) => {
           </Select>
         </Grid>
         <Grid item xs={12} sx={{ marginBottom: "20px" }}>
-          <TextField
-            id="categoryId"
-            label={t('product.form.categoryId')}
-            variant="outlined"
-            value={categoryId}
-            onChange={(e) => setCategorie(e.target.value)}
-            style={{
-              width: "80%",
-              height: "40px",
-              margin: "5px",
-              fontSize: "16px",
-            }}
-            sx={inputStyle}
-            InputProps={{
-              style: {
-                backgroundColor: "black",
-                color: "white"
-              },
-            }}
+          <Controller
+            control={control}
+            name="categoryId"
+            defaultValue={props.categoryId || ""}
+            render={({ field }) => (
+              <TextField
+                {...field}
+                id="categoryId"
+                label={t('product.form.categoryId')}
+                variant="outlined"
+                style={{
+                  width: "80%",
+                  height: "40px",
+                  margin: "5px",
+                  fontSize: "16px",
+                }}
+                sx={inputStyle}
+                InputProps={{
+                  style: {
+                    backgroundColor: "black",
+                    color: "white"
+                  },
+                }}
+                error={Boolean(errors.categoryId)}
+                helperText={errors.categoryId?.message}
+              />
+            )}
           />
         </Grid>
-        <Box sx={{ marginTop: "70px" }}>
-          <Button
+        <Box sx={{ marginTop: "50px", marginBottom: "10px" }}>
+        <Button
             variant="contained"
             color="error"
             href="/products"
@@ -177,10 +215,10 @@ const ProductForm = (props: ProductFormProps) => {
           >
             {t("product.cancelButton")}
           </Button>
-          <Button
+	        <Button
             variant="contained"
             color="inherit"
-            onClick={handleUpdateProduct}
+            type="submit"
             style={{
               backgroundColor: "white",
               color: "black",
