@@ -228,7 +228,7 @@ const ProductForm = (props: ProductFormProps) => {
               color="inherit"
               type="submit"
               style={{
-                backgroundColor: "green",
+                backgroundColor: "blue",
                 color: "white",
                 borderRadius: "0",
                 width: "200px",
