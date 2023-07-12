@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import { Box, Button, Grid, IconButton, Toolbar } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import CloseIcon from "@mui/icons-material/Close";
+import CloseIcon from '@mui/icons-material/Close';
 import Container from "@mui/material/Container";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";

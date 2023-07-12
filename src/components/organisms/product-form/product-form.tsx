@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import { Box, Button, Grid, Select, MenuItem, TextField } from "@mui/material";
 import { APIProduct } from "@/api/product.api";
@@ -222,6 +223,19 @@ const ProductForm = (props: ProductFormProps) => {
           />
         </Grid>
         <Box sx={{ marginTop: "50px", marginBottom: "10px" }}>
+            <Button
+              variant="contained"
+              color="inherit"
+              type="submit"
+              style={{
+                backgroundColor: "green",
+                color: "white",
+                borderRadius: "0",
+                width: "200px",
+              }}
+            >
+              {t("product.saveButton")}
+            </Button>
           <Button
             variant="contained"
             color="error"
@@ -235,19 +249,6 @@ const ProductForm = (props: ProductFormProps) => {
           >
             {t("product.cancelButton")}
           </Button>
-          <Button
-            variant="contained"
-            color="inherit"
-            type="submit"
-            style={{
-              backgroundColor: "white",
-              color: "black",
-              borderRadius: "0",
-              width: "200px",
-            }}
-          >
-            {t("product.saveButton")}
-          </Button>
         </Box>
       </Box>
       {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
@@ -256,3 +257,6 @@ const ProductForm = (props: ProductFormProps) => {
 };
 
 export default ProductForm;
+
+
+

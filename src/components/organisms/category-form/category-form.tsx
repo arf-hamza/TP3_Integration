@@ -79,6 +79,19 @@ const CategoryForm = (props: CategoryFormProps) => {
         </Grid>
 
         <Box sx={{ marginTop: "70px" }}>
+            <Button
+              variant="contained"
+              color="inherit"
+              type="submit"
+              style={{
+                backgroundColor: "green",
+                color: "white",
+                borderRadius: "0",
+                width: "200px",
+              }}
+            >
+              {t("category.saveButton")}
+            </Button>
         <Button
             variant="contained"
             color="error"
@@ -91,19 +104,6 @@ const CategoryForm = (props: CategoryFormProps) => {
             }}
           >
             {t("category.cancelButton")}
-          </Button>
-          <Button
-            variant="contained"
-            color="inherit"
-            type="submit"
-            style={{
-              backgroundColor: "white",
-              color: "black",
-              borderRadius: "0",
-              width: "200px",
-            }}
-          >
-            {t("category.saveButton")}
           </Button>
         </Box>
       </Box>
